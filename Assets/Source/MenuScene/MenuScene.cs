@@ -49,7 +49,6 @@ public class MenuScene : MonoBehaviour
     {
 
     }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -86,7 +85,6 @@ public class MenuScene : MonoBehaviour
         MPTimerPanel.SetActive(false);
         MPPlayButton.interactable = false;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -199,13 +197,11 @@ public class MenuScene : MonoBehaviour
         MultiplayerPanel.SetActive(false);
         SingleplayerPanel.SetActive(true);
     }
-
     public void OnMultiplayerButtonClicked()
     {
         SingleplayerPanel.SetActive(false);
         MultiplayerPanel.SetActive(true);
     }
-
     public void OnPlayButtonClicked()
     {
         if (MultiplayerPanel.activeSelf)
@@ -234,7 +230,6 @@ public class MenuScene : MonoBehaviour
 
         myGameManager.PlayGame();
     }
-
     public void OnExitButtonClicked()
     {
         myGameManager.ExitGame();
