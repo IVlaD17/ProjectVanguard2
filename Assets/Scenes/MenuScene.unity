@@ -2445,6 +2445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5c2b7d3ebdebc4b881875853c1584e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MenuPanel: {fileID: 393545726}
   SingleplayerPanel: {fileID: 1804069155}
   SingleplayerButton: {fileID: 517375879}
   PlayerNameField: {fileID: 832470316}
