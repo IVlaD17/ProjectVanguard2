@@ -14,9 +14,6 @@ public class Session : MonoBehaviour
     public float TurnTime { get; private set; }
     public float GameTime { get; private set; }
 
-    [Header("Prefabs")]
-    public GameObject SquarePrefab;
-
     public Camera MainCamera;
     public ViewController MyViewController { get; private set; }
 
