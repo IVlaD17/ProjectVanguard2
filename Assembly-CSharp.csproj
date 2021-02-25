@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{942CAEE8-C11F-EF99-786A-BF4081C55634}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -67,6 +68,7 @@
     <Compile Include="Assets\Source\Enums\GameState.cs" />
     <Compile Include="Assets\Source\Enums\RotationAxes.cs" />
     <Compile Include="Assets\Source\Enums\SessionState.cs" />
+    <Compile Include="Assets\Source\Enums\CameraControlAxes.cs" />
     <Compile Include="Assets\Source\GameScene\AI.cs" />
     <Compile Include="Assets\Source\GameScene\Bishop.cs" />
     <Compile Include="Assets\Source\GameScene\GameScene.cs" />
