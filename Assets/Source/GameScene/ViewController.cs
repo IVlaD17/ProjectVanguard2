@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ViewController : MonoBehaviour
 {
+    string gameManagerObjectName = "GameManager";
+
     public Session MySession { get; private set; }
 
     public RotationAxes Axes { get; private set; } = RotationAxes.MOUSE_X_AND_Y;
@@ -19,11 +21,11 @@ public class ViewController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject sessionObject = GameObject.Find(Constants.SESS_MANAGER);
+        GameObject sessionObject = GameObject.Find(gameManagerObjectName);
         if (sessionObject != null)
             MySession = sessionObject.GetComponent<Session>();
         else
-            Debug.Log(Constants.NO_SESS_MANAGER_FOUND);
+            Debug.LogErrorFormat("Failed to find the object named {0}.", gameManagerObjectName);
     }
 
     // Update is called once per frame

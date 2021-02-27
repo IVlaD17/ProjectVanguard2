@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
@@ -24,7 +22,7 @@ public class Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MyGameState = GameState.LOADING;
+        MyGameState = GameState.IN_MENU;
         myActiveScene = SceneManager.GetActiveScene();
     }
 
@@ -37,13 +35,9 @@ public class Game : MonoBehaviour
             case GameState.LOADING:
                 MyGameState = GameState.IN_MENU;
                 break;
-            case GameState.IN_MENU:
-                if (myActiveScene.name != Constants.MENU_SCENE)
-                    SceneManager.LoadScene(Constants.MENU_SCENE);                
+            case GameState.IN_MENU:               
                 break;
             case GameState.PLAYING:
-                if(myActiveScene.name != Constants.GAME_SCENE)
-                    SceneManager.LoadScene(Constants.GAME_SCENE);
                 break;
             case GameState.EXITING:
                 ShutDown();

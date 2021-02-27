@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
+    string gameManagerObjectName = "GameManager";
+
     Game myGameManager;
     Session mySessionManager;
 
@@ -49,17 +51,17 @@ public class HUD : MonoBehaviour
     void Start()
     {
         // Get the Game Controller
-        GameObject gameManager = GameObject.Find(Constants.GAME_MANAGER);
+        GameObject gameManager = GameObject.Find(gameManagerObjectName);
         if (gameManager != null)
             myGameManager = gameManager.GetComponent<Game>();
         else
-            Debug.Log(Constants.NO_GAME_MANAGER_FOUND);
+            Debug.LogErrorFormat("Failed to find the object named {0}.", gameManagerObjectName);
 
-        GameObject sessionManager = GameObject.Find(Constants.SESS_MANAGER);
+        GameObject sessionManager = GameObject.Find(gameManagerObjectName);
         if (sessionManager != null)
             mySessionManager = sessionManager.GetComponent<Session>();
         else
-            Debug.Log(Constants.NO_SESS_MANAGER_FOUND);
+            Debug.LogErrorFormat("Failed to find the object named {0}.", gameManagerObjectName);
 
         movesListRT = MovesListView.GetComponent<RectTransform>();
         fMovesListHeight = movesListRT.rect.height;
