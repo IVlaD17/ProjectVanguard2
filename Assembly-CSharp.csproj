@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Source\Controllers\GameMenuController.cs" />
     <Compile Include="Assets\Source\Controllers\HUDController.cs" />
     <Compile Include="Assets\Source\Controllers\MainMenuController.cs" />
     <Compile Include="Assets\Source\GameScene\AI.cs" />
@@ -93,8 +94,9 @@
     <Compile Include="Assets\Source\Models\Enums\GameState.cs" />
     <Compile Include="Assets\Source\Models\Enums\SessionState.cs" />
     <Compile Include="Assets\Source\PlayerInput.cs" />
-    <Compile Include="Assets\Source\Views\HUD.cs" />
-    <Compile Include="Assets\Source\Views\MainMenu.cs" />
+    <Compile Include="Assets\Source\Views\GameMenuView.cs" />
+    <Compile Include="Assets\Source\Views\HUDView.cs" />
+    <Compile Include="Assets\Source\Views\MainMenuView.cs" />
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>D:/Projects/Unity/ProjectVanguard2/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
