@@ -47,7 +47,6 @@ public class GameScene : MonoBehaviour
     {
         moveLabels = new List<Text>();
     }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -93,7 +92,6 @@ public class GameScene : MonoBehaviour
         PausedPanel.SetActive(false);
         PopupPanel.SetActive(false);
     }
-
     // Update is called once per frame
     void Update()
     {

@@ -1,0 +1,19 @@
+﻿using UnityEngine;
+
+namespace ProjectVanguard.Controllers
+{
+    public class HUDController : MonoBehaviour
+    {
+        // Start is called before the first frame update
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+    }
+}

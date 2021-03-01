@@ -63,10 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Source\Enums\CameraControlAxes.cs" />
-    <Compile Include="Assets\Source\Enums\ChessColor.cs" />
-    <Compile Include="Assets\Source\Enums\GameState.cs" />
-    <Compile Include="Assets\Source\Enums\SessionState.cs" />
+    <Compile Include="Assets\Source\Controllers\HUDController.cs" />
+    <Compile Include="Assets\Source\Controllers\MainMenuController.cs" />
     <Compile Include="Assets\Source\GameScene\AI.cs" />
     <Compile Include="Assets\Source\GameScene\Bishop.cs" />
     <Compile Include="Assets\Source\GameScene\GameScene.cs" />
@@ -90,7 +88,13 @@
     <Compile Include="Assets\Source\HUD.cs" />
     <Compile Include="Assets\Source\Menu.cs" />
     <Compile Include="Assets\Source\MenuScene\MenuScene.cs" />
+    <Compile Include="Assets\Source\Models\Enums\CameraControlAxes.cs" />
+    <Compile Include="Assets\Source\Models\Enums\ChessColor.cs" />
+    <Compile Include="Assets\Source\Models\Enums\GameState.cs" />
+    <Compile Include="Assets\Source\Models\Enums\SessionState.cs" />
     <Compile Include="Assets\Source\PlayerInput.cs" />
+    <Compile Include="Assets\Source\Views\HUD.cs" />
+    <Compile Include="Assets\Source\Views\MainMenu.cs" />
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>D:/Projects/Unity/ProjectVanguard2/Library/ScriptAssemblies/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
