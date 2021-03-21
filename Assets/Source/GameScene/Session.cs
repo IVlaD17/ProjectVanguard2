@@ -489,6 +489,7 @@ public class Session : MonoBehaviour
         return true;
     }
 
+    // Should rewrite this to return an integer instead of a boolean
     bool IsSquareInCheck(Player player, Square square)
     {
         Player opponent = GetOpponent(player);
