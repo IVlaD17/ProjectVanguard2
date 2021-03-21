@@ -9,5 +9,11 @@ namespace ProjectVanguard.Views
 
         // Confirm action modal box.
         private GameObject modalPanel;
+
+        public GameMenuView()
+        {
+            pausedPanel = GameObject.Find("PausedPanel");
+            modalPanel = GameObject.Find("PopupPanel");
+        }
     }
 }

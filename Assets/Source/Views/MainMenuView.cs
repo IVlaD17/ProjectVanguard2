@@ -35,7 +35,38 @@ namespace ProjectVanguard.Views
         private Slider multiPlayerTimerSlider;
         private GameObject multiPlayerTimerPanel;
 
-
         private Button multiPlayerPlayButton;
+
+        public MainMenuView()
+        {
+            menuPanel = GameObject.Find("MenuPanel");
+
+            // Singleplayer Panel Elements
+            singlePlayerPanel = GameObject.Find("SingleplayerPanel");
+            singlePlayerButton = GameObject.Find("SingleplayerButton").GetComponent<Button>();
+
+            playerNameField = GameObject.Find("PlayerNameInput").GetComponent<InputField>();
+
+            singlePlayerTimerPanel = GameObject.Find("SPTimerPanel");
+            singlePlayerTimerToggle = GameObject.Find("SPTimerToggle").GetComponent<Toggle>();
+            singlePlayerTimerSlider = GameObject.Find("SPTimerSlider").GetComponent<Slider>();
+            singlePlayerTimerLabel = GameObject.Find("SPTimerValueLabel").GetComponent<Text>();
+
+            singlePlayerPlayButton = GameObject.Find("SPPlayButton").GetComponent<Button>();
+
+            // Multiplayer Panel Elements
+            multiPlayerPanel = GameObject.Find("MultiplayerPanel");
+            multiPlayerButton = GameObject.Find("MultiplayerButton").GetComponent<Button>();
+
+            player1NameField = GameObject.Find("Player1NameInput").GetComponent<InputField>();
+            player2NameField = GameObject.Find("Player2NameInput").GetComponent<InputField>();
+
+            multiPlayerTimerPanel = GameObject.Find("MPTimerPanel");
+            multiPlayerTimerToggle = GameObject.Find("MPTimerToggle").GetComponent<Toggle>();
+            multiPlayerTimerSlider = GameObject.Find("MPTimerSlider").GetComponent<Slider>();
+            multiPlayerTimerLabel = GameObject.Find("MPTimerValueLabel").GetComponent<Text>();
+
+            multiPlayerButton = GameObject.Find("MPPlayButton").GetComponent<Button>();
+        }
     }
 }

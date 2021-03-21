@@ -34,5 +34,21 @@ namespace ProjectVanguard.Views
         // Moves list state holding variables.
         private int moveNumber;
         private List<Text> moveLabels;
+
+        public HUDView()
+        {
+            hudPanel = GameObject.Find("HUDPanel");
+
+            crosshairLabel = GameObject.Find("Crosshair").GetComponent<Text>();
+            gameTimeLabel = GameObject.Find("GameTimeLabel").GetComponent<Text>();
+            turnTimeLabel = GameObject.Find("TurnTimeLabel").GetComponent<Text>();
+            player1NameLabel = GameObject.Find("Player1NameLabel").GetComponent<Text>();
+            player2NameLabel = GameObject.Find("Player2NameLabel").GetComponent<Text>();
+            errorMessageLabel = GameObject.Find("ErrorMessageLabel").GetComponent<Text>();
+
+            movesPanel = GameObject.Find("MovesPanel");
+            movesListView = GameObject.Find("MovesListContent");
+            moveLabelPrefab = Resources.Load("UIElements/MoveLabel") as GameObject;
+        }
     }
 }

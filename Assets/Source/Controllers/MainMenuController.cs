@@ -6,12 +6,12 @@ namespace ProjectVanguard.Controllers
 {
     public class MainMenuController : MonoBehaviour
     {
-        private MainMenuView view = new MainMenuView();
+        private MainMenuView view;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            view = new MainMenuView();
         }
 
         // Update is called once per frame
