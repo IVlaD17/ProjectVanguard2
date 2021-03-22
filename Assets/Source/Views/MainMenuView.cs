@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace ProjectVanguard.Views
@@ -66,7 +68,36 @@ namespace ProjectVanguard.Views
             multiPlayerTimerSlider = GameObject.Find("MPTimerSlider").GetComponent<Slider>();
             multiPlayerTimerLabel = GameObject.Find("MPTimerValueLabel").GetComponent<Text>();
 
-            multiPlayerButton = GameObject.Find("MPPlayButton").GetComponent<Button>();
+            multiPlayerPlayButton = GameObject.Find("MPPlayButton").GetComponent<Button>();
+        }        
+
+        public void Display()
+        {
+            // Setup UI Menu Size
+            RectTransform menuPanelRectTransform = menuPanel.GetComponent<RectTransform>();
+            RectTransform multiPlayerPanelRectTransform = multiPlayerPanel.GetComponent<RectTransform>();
+            RectTransform singlePlayerPanelRectTransform = singlePlayerPanel.GetComponent<RectTransform>();
+
+            panelWidth = singlePlayerPanelRectTransform.rect.width;
+            panelHeight = singlePlayerPanelRectTransform.rect.height;
+
+            float magnificationFactor = Screen.width / 4 / menuPanelRectTransform.rect.width;
+
+            menuPanelRectTransform.sizeDelta = new Vector2(Screen.width / 4, 0);
+            singlePlayerPanelRectTransform.sizeDelta = new Vector2(panelWidth, panelHeight * magnificationFactor);
+            multiPlayerPanelRectTransform.sizeDelta = new Vector2(panelWidth, panelHeight * magnificationFactor);
+
+            // Setup Singleplayer Panel Input Fields
+            singlePlayerPanel.SetActive(false);
+            singlePlayerTimerToggle.isOn = false;
+            singlePlayerTimerPanel.SetActive(false);
+            singlePlayerPlayButton.interactable = false;
+
+            // Setup Multiplayer Panel Input Fields
+            multiPlayerPanel.SetActive(false);
+            multiPlayerTimerToggle.isOn = false;
+            multiPlayerTimerPanel.SetActive(false);
+            multiPlayerPlayButton.interactable = false;
         }
 
         public void DisplaySinglePlayerPanel()
@@ -84,6 +115,122 @@ namespace ProjectVanguard.Views
 
             multiPlayerPanel.SetActive(true);
             multiPlayerButton.interactable = false;
+        }
+
+        public void UpdateSinglePlayerTimerPanel()
+        {
+            if (singlePlayerTimerPanel.activeSelf)
+            {
+                if (singlePlayerTimerSlider.value == 1)
+                {
+                    singlePlayerTimerLabel.text = "1 minute";
+                }
+                else
+                {
+                    singlePlayerTimerLabel.text = Convert.ToString(singlePlayerTimerSlider.value) + " minutes";
+                }
+            }
+        }
+        public void UpdateMultiPlayerTimerPanel()
+        {
+            if (multiPlayerTimerPanel.activeSelf)
+            {
+                if (multiPlayerTimerSlider.value == 1)
+                {
+                    multiPlayerTimerLabel.text = "1 minute";
+                }
+                else
+                {
+                    multiPlayerTimerLabel.text = Convert.ToString(multiPlayerTimerSlider.value) + " minutes";
+                }
+            }
+        }
+
+        public void UpdateSinglePlayerPlayButton()
+        {
+            if(!string.IsNullOrWhiteSpace(playerNameField.text))
+            {
+                singlePlayerPlayButton.interactable = true;
+            }
+            else
+            {
+                singlePlayerPlayButton.interactable = false;
+            }
+        }
+        public void UpdateMultiPlayerPlayButton()
+        {
+            if(!string.IsNullOrWhiteSpace(player1NameField.text) && !string.IsNullOrWhiteSpace(player2NameField.text))
+            {
+                multiPlayerPlayButton.interactable = true;
+            }
+            else
+            {
+                multiPlayerPlayButton.interactable = false;
+            }
+        }
+
+        public bool IsSinglePlayerPanelActive()
+        {
+            return singlePlayerPanel.activeSelf;
+        }
+        public bool IsMultiPlayerPanelActive()
+        {
+            return multiPlayerPanel.activeSelf;
+        }
+
+        public string[] GetSinglePlayerNames()
+        {
+            string[] playerNames = new string[] { "", "Le Bot" };
+            if (!string.IsNullOrWhiteSpace(playerNameField.text))
+            {
+                playerNames[0] = playerNameField.text;
+            }
+            else
+            {
+                playerNames[0] = "";
+            }
+            return playerNames;
+        }
+        public string[] GetMultiPlayerNames()
+        {
+            string[] playerNames = new string[2];
+            if (!string.IsNullOrWhiteSpace(player1NameField.text))
+            {
+                playerNames[0] = player1NameField.text;
+            }
+            else
+            {
+                playerNames[0] = "";
+            }
+
+            if (!string.IsNullOrWhiteSpace(player2NameField.text))
+            {
+                playerNames[1] = player2NameField.text;
+            }
+            else
+            {
+                playerNames[1] = "";
+            }
+            return playerNames;
+        }
+
+        public float GetSinglePlayerTurnTime()
+        {
+            float turnTime = 0f;
+            if (singlePlayerTimerToggle.isOn)
+            {
+                turnTime = singlePlayerTimerSlider.value;
+            }
+            return turnTime;
+        }
+        public float GetMultiPlayerTurnTime()
+        {
+            float turnTime = 0f;
+            if (multiPlayerTimerToggle.isOn)
+            {
+                turnTime = multiPlayerTimerSlider.value;
+            }
+            return turnTime;
         }
     }
 }

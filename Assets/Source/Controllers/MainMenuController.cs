@@ -9,15 +9,26 @@ namespace ProjectVanguard.Controllers
         private MainMenuView view;
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             view = new MainMenuView();
+            view.Display();
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
+            if(view.IsSinglePlayerPanelActive())
+            {
+                view.UpdateSinglePlayerTimerPanel();
+                view.UpdateSinglePlayerPlayButton();
+            }
 
+            if(view.IsMultiPlayerPanelActive())
+            {
+                view.UpdateMultiPlayerTimerPanel();
+                view.UpdateMultiPlayerPlayButton();
+            }
         }
 
         public void OnSinglePlayerButtonClicked()
@@ -26,7 +37,8 @@ namespace ProjectVanguard.Controllers
         }
         public void OnSinglePlayerPlayButtonClicked()
         {
-
+            string[] playerNames = view.GetSinglePlayerNames();
+            float turnTime = view.GetSinglePlayerTurnTime();
         }
 
         public void OnMultiPlayerButtonClicked()
@@ -35,7 +47,8 @@ namespace ProjectVanguard.Controllers
         }
         public void OnMultiPlayerPlayButtonClicked()
         {
-
+            string[] playerNames = view.GetMultiPlayerNames();
+            float turnTime = view.GetMultiPlayerTurnTime();
         }
 
         public void OnExitButtonClicked()
