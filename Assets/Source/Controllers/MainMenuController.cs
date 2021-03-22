@@ -19,5 +19,28 @@ namespace ProjectVanguard.Controllers
         {
 
         }
+
+        public void OnSinglePlayerButtonClicked()
+        {
+            view.DisplaySinglePlayerPanel();
+        }
+        public void OnSinglePlayerPlayButtonClicked()
+        {
+
+        }
+
+        public void OnMultiPlayerButtonClicked()
+        {
+            view.DisplayMultiPlayerPanel();
+        }
+        public void OnMultiPlayerPlayButtonClicked()
+        {
+
+        }
+
+        public void OnExitButtonClicked()
+        {
+
+        }
     }
 }

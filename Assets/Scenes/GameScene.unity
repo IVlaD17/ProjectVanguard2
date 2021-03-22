@@ -4396,7 +4396,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1768106218}
+      - m_Target: {fileID: 1768106223}
         m_MethodName: OnSinglePlayerButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -5154,7 +5154,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1397778090}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9404762
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5359,9 +5359,6 @@ GameObject:
   - component: {fileID: 1184835428}
   - component: {fileID: 1184835427}
   - component: {fileID: 1184835429}
-  - component: {fileID: 1184835432}
-  - component: {fileID: 1184835431}
-  - component: {fileID: 1184835430}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5408,42 +5405,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 537565136}
---- !u!114 &1184835430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184835426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f86930afaf87d9245a86437a196ada41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1184835431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184835426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f11891c2049ff8948847f69cccbcd587, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1184835432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184835426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77d616dc28deec644862803faedabde6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1290657449
 GameObject:
   m_ObjectHideFlags: 0
@@ -5558,7 +5519,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1768106218}
+      - m_Target: {fileID: 1768106223}
         m_MethodName: OnMultiPlayerButtonClicked
         m_Mode: 1
         m_Arguments:
@@ -7061,6 +7022,7 @@ GameObject:
   - component: {fileID: 1768106220}
   - component: {fileID: 1768106219}
   - component: {fileID: 1768106218}
+  - component: {fileID: 1768106223}
   m_Layer: 5
   m_Name: MenuCanvas
   m_TagString: Untagged
@@ -7178,6 +7140,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1768106223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768106217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86930afaf87d9245a86437a196ada41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1770990715
 GameObject:
   m_ObjectHideFlags: 0

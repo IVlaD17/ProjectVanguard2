@@ -68,5 +68,22 @@ namespace ProjectVanguard.Views
 
             multiPlayerButton = GameObject.Find("MPPlayButton").GetComponent<Button>();
         }
+
+        public void DisplaySinglePlayerPanel()
+        {
+            singlePlayerPanel.SetActive(true);
+            singlePlayerButton.interactable = false;
+
+            multiPlayerPanel.SetActive(false);
+            multiPlayerButton.interactable = true;
+        }
+        public void DisplayMultiPlayerPanel()
+        {
+            singlePlayerPanel.SetActive(false);
+            singlePlayerButton.interactable = true;
+
+            multiPlayerPanel.SetActive(true);
+            multiPlayerButton.interactable = false;
+        }
     }
 }
