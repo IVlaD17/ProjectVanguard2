@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using ProjectVanguard.Models;
+
 public class Game : MonoBehaviour
 {
     Scene myActiveScene;
@@ -22,7 +24,7 @@ public class Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MyGameState = GameState.IN_MENU;
+        MyGameState = GameState.InMenu;
         myActiveScene = SceneManager.GetActiveScene();
     }
 
@@ -32,14 +34,14 @@ public class Game : MonoBehaviour
         myActiveScene = SceneManager.GetActiveScene();
         switch (MyGameState)
         {
-            case GameState.LOADING:
-                MyGameState = GameState.IN_MENU;
+            case GameState.Loading:
+                MyGameState = GameState.InMenu;
                 break;
-            case GameState.IN_MENU:               
+            case GameState.InMenu:               
                 break;
-            case GameState.PLAYING:
+            case GameState.Playing:
                 break;
-            case GameState.EXITING:
+            case GameState.Exiting:
                 ShutDown();
                 break;
         }
@@ -72,16 +74,16 @@ public class Game : MonoBehaviour
 
     public void PlayGame()
     {
-        MyGameState = GameState.PLAYING;
+        MyGameState = GameState.Playing;
     }
 
     public void QuitGame()
     {
-        MyGameState = GameState.IN_MENU;
+        MyGameState = GameState.InMenu;
     }
 
     public void ExitGame()
     {
-        MyGameState = GameState.EXITING;
+        MyGameState = GameState.Exiting;
     }
 }

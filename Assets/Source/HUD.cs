@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using ProjectVanguard.Models;
+
 public class HUD : MonoBehaviour
 {
     string gameManagerObjectName = "GameManager";
@@ -97,7 +99,7 @@ public class HUD : MonoBehaviour
     {
         switch (mySessionManager.MySessionState)
         {
-            case SessionState.PLAYING:
+            case SessionState.Playing:
                 string turnMinutes = ((int)(mySessionManager.TurnTime / 60)).ToString();
                 if (turnMinutes.Length == 1)
                     turnMinutes = "0" + turnMinutes;

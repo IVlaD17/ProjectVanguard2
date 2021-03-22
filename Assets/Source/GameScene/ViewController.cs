@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using ProjectVanguard.Models;
+
 public class ViewController : MonoBehaviour
 {
     string gameManagerObjectName = "GameManager";
 
     public Session MySession { get; private set; }
 
-    public RotationAxes Axes { get; private set; } = RotationAxes.MOUSE_X_AND_Y;
+    public CameraControlAxes Axes { get; private set; } = CameraControlAxes.VerticalAndHorizontal;
 
     float sensitivityHor = 1.0f;
     float sensitivityVert = 1.0f;
@@ -31,15 +33,15 @@ public class ViewController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MySession.MySessionState == SessionState.PLAYING)
+        if (MySession.MySessionState == SessionState.Playing)
         {
             // Horizontal Movement
-            if (Axes == RotationAxes.MOUSE_X)
+            if (Axes == CameraControlAxes.Horizontal)
             {
                 transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityHor, 0);
             }
             // Vertical Movement
-            else if (Axes == RotationAxes.MOUSE_Y)
+            else if (Axes == CameraControlAxes.Vertical)
             {
                 rotationX -= Input.GetAxis("Mouse Y") * sensitivityVert;
                 rotationX = Mathf.Clamp(rotationX, minimumVert, maximumVert);
@@ -47,7 +49,7 @@ public class ViewController : MonoBehaviour
                 float rotationY = transform.localEulerAngles.y;
                 transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
             }
-            else if(Axes == RotationAxes.MOUSE_X_AND_Y)
+            else if(Axes == CameraControlAxes.VerticalAndHorizontal)
             {
                 rotationX -= Input.GetAxis("Mouse Y") * sensitivityVert;
                 rotationX = Mathf.Clamp(rotationX, minimumVert, maximumVert);
@@ -57,7 +59,7 @@ public class ViewController : MonoBehaviour
 
                 transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
             }
-            else if(Axes == RotationAxes.TOP_DOWN)
+            else if(Axes == CameraControlAxes.TopDown)
             {              
                 transform.Translate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
 
@@ -78,9 +80,9 @@ public class ViewController : MonoBehaviour
 
     public void ToggleViews()
     {
-        if (Axes == RotationAxes.MOUSE_X_AND_Y)
-            Axes = RotationAxes.TOP_DOWN;
-        else if (Axes == RotationAxes.TOP_DOWN)
-            Axes = RotationAxes.MOUSE_X_AND_Y;
+        if (Axes == CameraControlAxes.VerticalAndHorizontal)
+            Axes = CameraControlAxes.TopDown;
+        else if (Axes == CameraControlAxes.TopDown)
+            Axes = CameraControlAxes.VerticalAndHorizontal;
     }
 }

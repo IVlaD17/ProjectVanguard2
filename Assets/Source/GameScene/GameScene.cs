@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+using ProjectVanguard.Models;
+
 public class GameScene : MonoBehaviour
 {
     string gameManagerObjectName = "GameManager";
@@ -97,7 +99,7 @@ public class GameScene : MonoBehaviour
     {
         switch (mySessionManager.MySessionState)
         {
-            case SessionState.PLAYING:
+            case SessionState.Playing:
                 string turnMinutes = ((int)(mySessionManager.TurnTime / 60)).ToString();
                 if (turnMinutes.Length == 1)
                     turnMinutes = "0" + turnMinutes;

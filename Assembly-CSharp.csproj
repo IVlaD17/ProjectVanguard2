@@ -76,14 +76,11 @@
     <Compile Include="Assets\Source\GameScene\Piece.cs" />
     <Compile Include="Assets\Source\GameScene\Queen.cs" />
     <Compile Include="Assets\Source\GameScene\Rook.cs" />
-    <Compile Include="Assets\Source\GameScene\RotationAxes.cs" />
     <Compile Include="Assets\Source\GameScene\Session.cs" />
-    <Compile Include="Assets\Source\GameScene\SessionState.cs" />
     <Compile Include="Assets\Source\GameScene\Square.cs" />
     <Compile Include="Assets\Source\GameScene\ViewController.cs" />
     <Compile Include="Assets\Source\Global\Constants.cs" />
     <Compile Include="Assets\Source\Global\Game.cs" />
-    <Compile Include="Assets\Source\Global\GameState.cs" />
     <Compile Include="Assets\Source\Global\Move.cs" />
     <Compile Include="Assets\Source\Global\Player.cs" />
     <Compile Include="Assets\Source\HUD.cs" />

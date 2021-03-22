@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using ProjectVanguard.Models;
+
 public class Session : MonoBehaviour
 {
     public GameScene MyGameScene { get; private set; }
@@ -43,7 +45,7 @@ public class Session : MonoBehaviour
 
         MyViewController = MainCamera.GetComponent<ViewController>();
 
-        MySessionState = SessionState.PLAYING;
+        MySessionState = SessionState.Playing;
 
         Board = new Square[Constants.NUMBER_OF_ROWS, Constants.NUMBER_OF_COLS];
         for(int rowIndex = 0; rowIndex < Constants.NUMBER_OF_ROWS; rowIndex++)
@@ -103,7 +105,7 @@ public class Session : MonoBehaviour
     void Update()
     {
         Debug.Log(MySessionState);
-        if(MySessionState == SessionState.PLAYING)
+        if(MySessionState == SessionState.Playing)
         {
             Player activePlayer = GetActivePlayer();
             GameTime += Time.deltaTime;
@@ -260,15 +262,15 @@ public class Session : MonoBehaviour
 
             if(IsCheckmate())
             {
-                MySessionState = SessionState.GAME_OVER;
+                MySessionState = SessionState.GameOver;
             }
 
             if(IsStalemate())
             {
-                MySessionState = SessionState.STALEMATE;
+                MySessionState = SessionState.Stalemate;
             }
         }
-        else if (MySessionState == SessionState.PAUSED)
+        else if (MySessionState == SessionState.Paused)
         {
             if (Input.GetKeyUp(KeyCode.Escape))
                 ResumeGame();
@@ -691,7 +693,7 @@ public class Session : MonoBehaviour
 
         MainCamera.transform.parent = Players[newPlayerIndex].gameObject.transform;
 
-        if (MyViewController.Axes == RotationAxes.TOP_DOWN)
+        if (MyViewController.Axes == CameraControlAxes.TopDown)
         {
             if (newPlayerIndex == 0)
             {
@@ -720,7 +722,7 @@ public class Session : MonoBehaviour
     {      
         Player activePlayer = GetActivePlayer();
         MyViewController.ToggleViews();
-        if (MyViewController.Axes == RotationAxes.TOP_DOWN)
+        if (MyViewController.Axes == CameraControlAxes.TopDown)
         {
             if(activePlayer.name.Contains("White"))
             {
@@ -745,13 +747,13 @@ public class Session : MonoBehaviour
 
     public void PauseGame()
     {
-        MySessionState = SessionState.PAUSED;
+        MySessionState = SessionState.Paused;
         Cursor.lockState = CursorLockMode.None;
     }
 
     public void ResumeGame()
     {
-        MySessionState = SessionState.PLAYING;
+        MySessionState = SessionState.Playing;
         Cursor.lockState = CursorLockMode.Locked;
     }
 }
