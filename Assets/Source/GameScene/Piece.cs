@@ -1,6 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 using UnityEngine;
+
+using ProjectVanguard.Models;
 
 public class Piece : MonoBehaviour
 {
@@ -39,7 +41,7 @@ public class Piece : MonoBehaviour
             Debug.Log("Couldn't find object named " + name.Substring(0, 11));
 
         MyColor = MyPlayer.MyColor;
-        if (MyColor == ChessColor.WHITE)
+        if (MyColor == ChessColor.White)
             MyRenderer.material.color = Constants.COLOR_L_BROWN;
         else
             MyRenderer.material.color = Constants.COLOR_D_BROWN;

@@ -1,6 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 using UnityEngine;
+
+using ProjectVanguard.Models;
 
 public class Player : MonoBehaviour
 {
@@ -75,9 +77,9 @@ public class Player : MonoBehaviour
         MyName = "TempName";
 
         if (name == "WhitePlayer")
-            MyColor = ChessColor.WHITE;
+            MyColor = ChessColor.White;
         else
-            MyColor = ChessColor.BLACK;
+            MyColor = ChessColor.Black;
 
         SelectedPiece = null;
     }

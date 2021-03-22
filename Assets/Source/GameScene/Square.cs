@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using ProjectVanguard.Models;
+
 public class Square : MonoBehaviour
 {
     public Renderer MyRenderer { get; private set; }
@@ -30,11 +32,11 @@ public class Square : MonoBehaviour
         int row = RowNumber - 49;
 
         if ((row % 2 == 0 && col % 2 == 0) || (row % 2 != 0 && col % 2 != 0))
-            MyColor = ChessColor.BLACK;
+            MyColor = ChessColor.Black;
         else
-            MyColor = ChessColor.WHITE;
+            MyColor = ChessColor.White;
 
-        if (MyColor == ChessColor.WHITE)
+        if (MyColor == ChessColor.White)
             MyRenderer.material.color = Constants.COLOR_WHITE;
         else
             MyRenderer.material.color = Constants.COLOR_BLACK;
