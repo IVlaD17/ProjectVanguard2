@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{942CAEE8-C11F-EF99-786A-BF4081C55634}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -83,7 +84,6 @@
     <Compile Include="Assets\Source\Global\Move.cs" />
     <Compile Include="Assets\Source\Global\Player.cs" />
     <Compile Include="Assets\Source\HUD.cs" />
-    <Compile Include="Assets\Source\Menu.cs" />
     <Compile Include="Assets\Source\MenuScene\MenuScene.cs" />
     <Compile Include="Assets\Source\Models\Components\PieceModel.cs" />
     <Compile Include="Assets\Source\Models\Components\PieceMovement.cs" />
