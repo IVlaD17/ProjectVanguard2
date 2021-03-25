@@ -7,9 +7,6 @@ namespace ProjectVanguard.Views
 {
     public class MainMenuView
     {
-        private float panelWidth;
-        private float panelHeight;
-
         private GameObject menuPanel;
 
         // Panel that is used when starting a single player game.
@@ -73,20 +70,6 @@ namespace ProjectVanguard.Views
 
         public void Display()
         {
-            // Setup UI Menu Size
-            RectTransform menuPanelRectTransform = menuPanel.GetComponent<RectTransform>();
-            RectTransform multiPlayerPanelRectTransform = multiPlayerPanel.GetComponent<RectTransform>();
-            RectTransform singlePlayerPanelRectTransform = singlePlayerPanel.GetComponent<RectTransform>();
-
-            panelWidth = singlePlayerPanelRectTransform.rect.width;
-            panelHeight = singlePlayerPanelRectTransform.rect.height;
-
-            float magnificationFactor = Screen.width / 4 / menuPanelRectTransform.rect.width;
-
-            menuPanelRectTransform.sizeDelta = new Vector2(Screen.width / 4, 0);
-            singlePlayerPanelRectTransform.sizeDelta = new Vector2(panelWidth, panelHeight * magnificationFactor);
-            multiPlayerPanelRectTransform.sizeDelta = new Vector2(panelWidth, panelHeight * magnificationFactor);
-
             // Setup Singleplayer Panel Input Fields
             singlePlayerPanel.SetActive(false);
             singlePlayerTimerToggle.isOn = false;
