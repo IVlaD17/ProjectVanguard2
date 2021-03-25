@@ -100,6 +100,15 @@ namespace ProjectVanguard.Views
             multiPlayerButton.interactable = false;
         }
 
+        public void ToggleSinglePlayerTimerPanel()
+        {
+            singlePlayerTimerPanel.SetActive(!singlePlayerTimerPanel.activeSelf);
+        }
+        public void ToggleMultiPlayerTimerPanel()
+        {
+            multiPlayerTimerPanel.SetActive(!multiPlayerTimerPanel.activeSelf);
+        }
+
         public void UpdateSinglePlayerTimerPanel()
         {
             if (singlePlayerTimerPanel.activeSelf)
