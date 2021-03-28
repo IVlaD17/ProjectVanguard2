@@ -1,0 +1,4 @@
+D:\Projects\Unity\ProjectVanguard2\ProjectVanguard2Tests\obj\Debug\netcoreapp3.1\ProjectVanguard2Tests.csprojAssemblyReference.cache
+D:\Projects\Unity\ProjectVanguard2\ProjectVanguard2Tests\obj\Debug\netcoreapp3.1\ProjectVanguard2Tests.AssemblyInfoInputs.cache
+D:\Projects\Unity\ProjectVanguard2\ProjectVanguard2Tests\obj\Debug\netcoreapp3.1\ProjectVanguard2Tests.AssemblyInfo.cs
+D:\Projects\Unity\ProjectVanguard2\ProjectVanguard2Tests\obj\Debug\netcoreapp3.1\ProjectVanguard2Tests.csproj.CoreCompileInputs.cache

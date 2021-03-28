@@ -31,10 +31,6 @@ namespace ProjectVanguard.Views
         private float movesListHeight;
         private RectTransform movesList;
 
-        // Moves list state holding variables.
-        private int moveNumber;
-        private List<Text> moveLabels;
-
         public HUDView()
         {
             hudPanel = GameObject.Find("HUDPanel");
