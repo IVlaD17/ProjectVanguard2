@@ -46,5 +46,19 @@ namespace ProjectVanguard.Views
             movesListView = GameObject.Find("MovesListContent");
             moveLabelPrefab = Resources.Load("UIElements/MoveLabel") as GameObject;
         }
+
+        public void UpdateGameTimeLabel(string time)
+        {
+            gameTimeLabel.text = $"Game Time: {time}";
+        }
+        public void UpdateTurnTimeLabel(string time)
+        {
+            turnTimeLabel.text = $"Turn Time: {time}";
+        }
+
+        public void ToggleCrosshairDisplay()
+        {
+            crosshairLabel.enabled = !crosshairLabel.enabled;
+        }
     }
 }
