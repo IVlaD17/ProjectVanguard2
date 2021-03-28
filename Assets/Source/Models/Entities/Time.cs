@@ -10,7 +10,7 @@ namespace ProjectVanguard.Models.Entities
         private int secondsInAMonth = 2628000;
         private int secondsInAYear = 31536000;
 
-        public float Seconds { get; set; }
+        public float Seconds { get; private set; }
 
         public Time(float seconds)
         {
@@ -20,10 +20,23 @@ namespace ProjectVanguard.Models.Entities
                 throw new ArgumentOutOfRangeException();
         }
 
+        /// <summary>
+        /// Takes only a positive value. Increases the amount of seconds by the value passed.
+        /// </summary>
+        /// <param name="value"></param>
         public void IncreaseTime(float value)
         {
             if (value >= 0)
                 Seconds += value;
+        }
+        /// <summary>
+        /// Takes only a positive value. Decreases the amount of seconds by the value passed.
+        /// </summary>
+        /// <param name="value"></param>
+        public void DecreaseTime(float value)
+        {
+            if (value >= 0)
+                Seconds -= value;
         }
 
         public override string ToString()
