@@ -1,19 +1,7 @@
-﻿using UnityEngine;
-
-namespace ProjectVanguard.Models.Entities
+﻿namespace ProjectVanguard.Models.Entities
 {
-    public class Game : MonoBehaviour
+    public class Game
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
     }
 }
