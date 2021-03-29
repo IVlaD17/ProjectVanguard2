@@ -45,7 +45,7 @@ public class Session : MonoBehaviour
 
         MyViewController = MainCamera.GetComponent<ViewController>();
 
-        MySessionState = SessionState.Playing;
+        MySessionState = SessionState.Paused;
 
         Board = new Square[Constants.NUMBER_OF_ROWS, Constants.NUMBER_OF_COLS];
         for(int rowIndex = 0; rowIndex < Constants.NUMBER_OF_ROWS; rowIndex++)
@@ -93,7 +93,7 @@ public class Session : MonoBehaviour
 
         Players[0].ToggleActive();
 
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
 
         GameTime = 0f;
 
@@ -272,8 +272,8 @@ public class Session : MonoBehaviour
         }
         else if (MySessionState == SessionState.Paused)
         {
-            if (Input.GetKeyUp(KeyCode.Escape))
-                ResumeGame();
+            //if (Input.GetKeyUp(KeyCode.Escape))
+            //    ResumeGame();
         }
     }
     
