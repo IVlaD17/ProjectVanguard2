@@ -8,12 +8,6 @@ namespace ProjectVanguard.Controllers
     {
         public GameMenuView View { get; private set; }
 
-        // Awake is called when the script instance is being loaded
-        private void Awake()
-        {
-
-        }
-
         // Start is called before the first frame update
         private void Start()
         {
