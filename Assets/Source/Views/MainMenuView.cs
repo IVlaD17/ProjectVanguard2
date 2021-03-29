@@ -111,7 +111,6 @@ namespace ProjectVanguard.Views
 
         public void ToggleMainMenu()
         {
-            Debug.Log(menuPanel.name);
             menuPanel.SetActive(!menuPanel.activeSelf);
         }
 
