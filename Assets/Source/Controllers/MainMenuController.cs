@@ -39,6 +39,8 @@ namespace ProjectVanguard.Controllers
         {
             string[] playerNames = view.GetSinglePlayerNames();
             float turnTime = view.GetSinglePlayerTurnTime();
+
+            view.ToggleMainMenu();
         }
         public void OnSinglePlayerTimerToggleValueChanged()
         {
@@ -53,6 +55,8 @@ namespace ProjectVanguard.Controllers
         {
             string[] playerNames = view.GetMultiPlayerNames();
             float turnTime = view.GetMultiPlayerTurnTime();
+
+            view.ToggleMainMenu();
         }
         public void OnMultiPlayerTimerToggleValueChanged()
         {

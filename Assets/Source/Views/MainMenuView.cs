@@ -109,6 +109,12 @@ namespace ProjectVanguard.Views
             multiPlayerTimerPanel.SetActive(!multiPlayerTimerPanel.activeSelf);
         }
 
+        public void ToggleMainMenu()
+        {
+            Debug.Log(menuPanel.name);
+            menuPanel.SetActive(!menuPanel.activeSelf);
+        }
+
         public void UpdateSinglePlayerTimerPanel()
         {
             if (singlePlayerTimerPanel.activeSelf)
