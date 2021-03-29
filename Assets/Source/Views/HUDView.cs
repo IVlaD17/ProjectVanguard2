@@ -22,17 +22,18 @@ namespace ProjectVanguard.Views
         private GameObject moveLabelPrefab;
 
         // Details defining each move label.
-        private float moveLabelWidth;
         private float moveLabelHeight;
         private RectTransform moveLabel;
 
         // Details defining the overall moves list.
-        private float movesListWidth;
         private float movesListHeight;
         private RectTransform movesList;
 
+        private List<Text> moveLabels;
+
         public HUDView()
         {
+            moveLabels = new List<Text>();
             hudPanel = GameObject.Find("HUDPanel");
 
             crosshairLabel = GameObject.Find("Crosshair").GetComponent<Text>();
@@ -45,6 +46,9 @@ namespace ProjectVanguard.Views
             movesPanel = GameObject.Find("MovesPanel");
             movesListView = GameObject.Find("MovesListContent");
             moveLabelPrefab = Resources.Load("UIElements/MoveLabel") as GameObject;
+
+            movesList = movesListView.GetComponent<RectTransform>();
+            moveLabel = moveLabelPrefab.GetComponent<RectTransform>();
         }
 
         public void UpdateGameTimeLabel(string time)
@@ -59,6 +63,25 @@ namespace ProjectVanguard.Views
         public void ToggleCrosshairDisplay()
         {
             crosshairLabel.enabled = !crosshairLabel.enabled;
+        }
+        
+        public void CreateNewMoveLabel(string move)
+        {
+            GameObject moveLabelGO = Object.Instantiate(moveLabelPrefab);
+            Text moveLabel = moveLabelGO.GetComponent<Text>();
+
+            moveLabel.text = move;
+            moveLabels.Add(moveLabel);
+
+            moveLabelGO.name = $"MoveLabel{moveLabels.Count}";
+            moveLabelGO.transform.SetParent(movesListView.transform);
+
+            movesListHeight += moveLabelHeight;
+            movesList.sizeDelta = new Vector2(0, movesListHeight);
+        }
+        public void UpdateMoveLabel(string move)
+        {
+            moveLabels[moveLabels.Count - 1].text += $" - {move}";
         }
     }
 }
