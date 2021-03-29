@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
 using ProjectVanguard.Views;
+using ProjectVanguard.Models.Entities;
 
 namespace ProjectVanguard.Controllers
 {
     public class MainMenuController : MonoBehaviour
     {
         private MainMenuView view;
+
+        public Models.Entities.Session Session { get; private set; }
 
         // Start is called before the first frame update
         private void Start()
@@ -37,8 +40,10 @@ namespace ProjectVanguard.Controllers
         }
         public void OnSinglePlayerPlayButtonClicked()
         {
-            string[] playerNames = view.GetSinglePlayerNames();
             float turnTime = view.GetSinglePlayerTurnTime();
+            string[] playerNames = view.GetSinglePlayerNames();
+
+            Session = new Models.Entities.Session(CreatePlayers(playerNames, 0), turnTime);
 
             view.ToggleMainMenu();
         }
@@ -53,8 +58,10 @@ namespace ProjectVanguard.Controllers
         }
         public void OnMultiPlayerPlayButtonClicked()
         {
-            string[] playerNames = view.GetMultiPlayerNames();
             float turnTime = view.GetMultiPlayerTurnTime();
+            string[] playerNames = view.GetMultiPlayerNames();
+
+            Session = new Models.Entities.Session(CreatePlayers(playerNames, -1), turnTime);
 
             view.ToggleMainMenu();
         }
@@ -66,6 +73,20 @@ namespace ProjectVanguard.Controllers
         public void OnExitButtonClicked()
         {
 
+        }
+
+        private Models.Entities.Player[] CreatePlayers(string[] playerNames, int aiPlayerIndex)
+        {
+            Models.Entities.Player[] players = new Models.Entities.Player[playerNames.Length];
+            for(int index = 0; index < playerNames.Length; index++)
+            {
+                if (index == aiPlayerIndex)
+                    players[index] = new Models.Entities.Player(true, playerNames[index]);
+                else
+                    players[index] = new Models.Entities.Player(false, playerNames[index]);
+            }
+
+            return players;
         }
     }
 }

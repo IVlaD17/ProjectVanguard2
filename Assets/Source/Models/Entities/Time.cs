@@ -14,7 +14,7 @@ namespace ProjectVanguard.Models.Entities
 
         public Time(float seconds)
         {
-            if (seconds > 0)
+            if (seconds >= 0)
                 Seconds = seconds;
             else
                 throw new ArgumentOutOfRangeException();

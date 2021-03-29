@@ -1,19 +1,14 @@
-﻿using UnityEngine;
-
-namespace ProjectVanguard.Models.Entities
+﻿namespace ProjectVanguard.Models.Entities
 {
-    public class Player : MonoBehaviour
+    public class Player
     {
-        // Start is called before the first frame update
-        void Start()
+        public bool IsAIControlled { get; private set; }
+        public string Name { get; private set; }
+
+        public Player(bool isAIControlled, string name)
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            IsAIControlled = isAIControlled;
+            Name = name;
         }
     }
 }
