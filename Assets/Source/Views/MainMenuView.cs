@@ -7,7 +7,7 @@ namespace ProjectVanguard.Views
 {
     public class MainMenuView
     {
-        private GameObject menuPanel;
+        public GameObject MenuPanel { get; private set; }
 
         // Panel that is used when starting a single player game.
         private Button singlePlayerButton;
@@ -38,7 +38,7 @@ namespace ProjectVanguard.Views
 
         public MainMenuView()
         {
-            menuPanel = GameObject.Find("MenuPanel");
+            MenuPanel = GameObject.Find("MenuPanel");
 
             // Singleplayer Panel Elements
             singlePlayerPanel = GameObject.Find("SingleplayerPanel");
@@ -68,15 +68,38 @@ namespace ProjectVanguard.Views
             multiPlayerPlayButton = GameObject.Find("MPPlayButton").GetComponent<Button>();
         }        
 
+        public void Reset()
+        {
+            MenuPanel.SetActive(true);
+
+            // Setup Singleplayer Panel Input Fields
+            singlePlayerButton.interactable = true;
+            singlePlayerPanel.SetActive(false);
+            playerNameField.text = "";
+            singlePlayerTimerToggle.isOn = false;
+            singlePlayerTimerPanel.SetActive(false);
+            singlePlayerPlayButton.interactable = false;
+
+            // Setup Multiplayer Panel Input Fields
+            multiPlayerButton.interactable = true;
+            multiPlayerPanel.SetActive(false);
+            player1NameField.text = "";
+            player2NameField.text = "";
+            multiPlayerTimerToggle.isOn = false;
+            multiPlayerTimerPanel.SetActive(false);
+            multiPlayerPlayButton.interactable = false;
+        }
         public void Display()
         {
             // Setup Singleplayer Panel Input Fields
+            singlePlayerButton.interactable = true;
             singlePlayerPanel.SetActive(false);
             singlePlayerTimerToggle.isOn = false;
             singlePlayerTimerPanel.SetActive(false);
             singlePlayerPlayButton.interactable = false;
 
             // Setup Multiplayer Panel Input Fields
+            multiPlayerButton.interactable = true;
             multiPlayerPanel.SetActive(false);
             multiPlayerTimerToggle.isOn = false;
             multiPlayerTimerPanel.SetActive(false);
@@ -111,7 +134,7 @@ namespace ProjectVanguard.Views
 
         public void ToggleMainMenu()
         {
-            menuPanel.SetActive(!menuPanel.activeSelf);
+            MenuPanel.SetActive(!MenuPanel.activeSelf);
         }
 
         public void UpdateSinglePlayerTimerPanel()

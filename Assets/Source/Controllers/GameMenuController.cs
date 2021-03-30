@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using ProjectVanguard.Views;
+using ProjectVanguard.Models;
 
 namespace ProjectVanguard.Controllers
 {
@@ -36,9 +37,7 @@ namespace ProjectVanguard.Controllers
         {
             View.ToggleModalPanel();
             View.TogglePausedPanel();
-            Debug.Log("Quitting the game.");
-            // TODO: Quit the game
-            // TODO: Implement singleton Game class. (Acceptable)
+            Models.Entities.Game.Instance.ChangeGameState(GameState.InMenu);
         }
         public void OnModalPanelNoButtonClicked()
         {

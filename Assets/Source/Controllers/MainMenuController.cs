@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using ProjectVanguard.Views;
+using ProjectVanguard.Models;
 using ProjectVanguard.Models.Entities;
 
 namespace ProjectVanguard.Controllers
@@ -21,16 +22,22 @@ namespace ProjectVanguard.Controllers
         // Update is called once per frame
         private void Update()
         {
-            if(view.IsSinglePlayerPanelActive())
+            if (Models.Entities.Game.Instance.GameState == GameState.InMenu)
             {
-                view.UpdateSinglePlayerTimerPanel();
-                view.UpdateSinglePlayerPlayButton();
-            }
+                if(!view.MenuPanel.activeSelf)
+                    view.Reset();
 
-            if(view.IsMultiPlayerPanelActive())
-            {
-                view.UpdateMultiPlayerTimerPanel();
-                view.UpdateMultiPlayerPlayButton();
+                if (view.IsSinglePlayerPanelActive())
+                {
+                    view.UpdateSinglePlayerTimerPanel();
+                    view.UpdateSinglePlayerPlayButton();
+                }
+
+                if (view.IsMultiPlayerPanelActive())
+                {
+                    view.UpdateMultiPlayerTimerPanel();
+                    view.UpdateMultiPlayerPlayButton();
+                }
             }
         }
 
@@ -44,6 +51,7 @@ namespace ProjectVanguard.Controllers
             string[] playerNames = view.GetSinglePlayerNames();
 
             Session = new Models.Entities.Session(CreatePlayers(playerNames, 0), turnTime);
+            Models.Entities.Game.Instance.ChangeGameState(GameState.Playing);
 
             view.ToggleMainMenu();
         }
@@ -62,6 +70,7 @@ namespace ProjectVanguard.Controllers
             string[] playerNames = view.GetMultiPlayerNames();
 
             Session = new Models.Entities.Session(CreatePlayers(playerNames, -1), turnTime);
+            Models.Entities.Game.Instance.ChangeGameState(GameState.Playing);
 
             view.ToggleMainMenu();
         }
@@ -72,7 +81,7 @@ namespace ProjectVanguard.Controllers
 
         public void OnExitButtonClicked()
         {
-
+            Models.Entities.Game.Instance.ExitGame();
         }
 
         private Models.Entities.Player[] CreatePlayers(string[] playerNames, int aiPlayerIndex)
