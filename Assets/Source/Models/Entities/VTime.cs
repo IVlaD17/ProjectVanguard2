@@ -145,7 +145,7 @@ namespace ProjectVanguard.Models.Entities
                 if (seconds.Length == 1)
                     seconds = $"0{seconds}";
 
-                toString = $"{minutes}:{seconds}";
+                toString = $"00:{minutes}:{seconds}";
             }
             else
             {
@@ -153,7 +153,7 @@ namespace ProjectVanguard.Models.Entities
                 if (seconds.Length == 1)
                     seconds = $"0{seconds}";
 
-                toString = seconds;
+                toString = $"00:00:{seconds}";
             }
 
             return toString;
