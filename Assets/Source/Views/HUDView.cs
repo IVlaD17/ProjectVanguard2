@@ -51,6 +51,31 @@ namespace ProjectVanguard.Views
             moveLabel = moveLabelPrefab.GetComponent<RectTransform>();
         }
 
+        public void Hide()
+        {
+            hudPanel.SetActive(false);
+            movesPanel.SetActive(false);
+        }
+        public void Display(string player1Name, string player2Name)
+        {
+            UpdateErrorMessage("");
+
+            player1NameLabel.text = player1Name;
+            player2NameLabel.text = player2Name;
+
+            hudPanel.SetActive(true);
+            movesPanel.SetActive(true);
+        }
+        public bool IsVisible()
+        {
+            return hudPanel.activeSelf;
+        }
+
+        public void UpdateErrorMessage(string message)
+        {
+            errorMessageLabel.text = message;
+        }
+
         public void UpdateGameTimeLabel(string time)
         {
             gameTimeLabel.text = $"Game Time: {time}";

@@ -104,7 +104,6 @@ public class Session : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(MySessionState);
         if(MySessionState == SessionState.Playing)
         {
             Player activePlayer = GetActivePlayer();

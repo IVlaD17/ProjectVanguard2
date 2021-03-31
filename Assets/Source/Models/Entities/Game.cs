@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using UnityEngine;
 
@@ -35,6 +36,15 @@ namespace ProjectVanguard.Models.Entities
                 return null;
 
             return currentSession;
+        }
+
+        public string GetPlayerName(int playerNumber)
+        {
+            Session currentSession = GetCurrentSession();
+            if (currentSession != null)
+                return currentSession.Players[playerNumber - 1].Name;
+            else
+                throw new NullReferenceException();
         }
 
         public bool IsPlaying()

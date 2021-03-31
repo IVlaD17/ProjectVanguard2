@@ -15,17 +15,13 @@ namespace ProjectVanguard.Controllers
         // Moves list state holding variables.
         private List<string> moves;
 
-        private VTime gameTime;
-        private VTime turnTime;
-
         // Start is called before the first frame update
         void Start()
         {
             view = new HUDView();
             moves = new List<string>();
 
-            gameTime = new VTime(0f);
-            turnTime = new VTime(0f);
+            view.Hide();
         }
 
         // Update is called once per frame
@@ -33,8 +29,14 @@ namespace ProjectVanguard.Controllers
         {
             if (Models.Entities.Game.Instance.IsPlaying())
             {
-                view.UpdateGameTimeLabel(Models.Entities.Game.Instance.GetCurrentSession().GameTime.ToString());
-                view.UpdateTurnTimeLabel(Models.Entities.Game.Instance.GetCurrentSession().TurnTime.ToString());
+                if (!view.IsVisible())
+                    view.Display(Models.Entities.Game.Instance.GetPlayerName(1), Models.Entities.Game.Instance.GetPlayerName(2));
+
+                if (Models.Entities.Game.Instance.IsPlaying())
+                {
+                    view.UpdateGameTimeLabel(Models.Entities.Game.Instance.GetCurrentSession().GameTime.ToString());
+                    view.UpdateTurnTimeLabel(Models.Entities.Game.Instance.GetCurrentSession().TurnTime.ToString());
+                }
             }
         }
 
