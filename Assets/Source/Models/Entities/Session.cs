@@ -1,4 +1,8 @@
-﻿namespace ProjectVanguard.Models.Entities
+﻿using UnityEngine;
+
+using ProjectVanguard.Models.Systems;
+
+namespace ProjectVanguard.Models.Entities
 {
     public class Session
     {
@@ -13,6 +17,12 @@
             TurnTime = new VTime(turnTime);
 
             Players = players;
+            GameUpdater.AddUpdateCallback(Update);
+        }
+
+        void Update()
+        {
+            
         }
     }
 }
