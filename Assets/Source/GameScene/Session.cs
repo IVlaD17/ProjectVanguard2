@@ -7,7 +7,7 @@ using ProjectVanguard.Models;
 
 public class Session : MonoBehaviour
 {
-    public GameScene MyGameScene { get; private set; }
+    // public GameScene MyGameScene { get; private set; }
 
     public Game MyGameManager { get; private set; }
     public bool IsAIEnabled { get; private set; }
@@ -35,7 +35,7 @@ public class Session : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MyGameScene = GameObject.Find("SceneController").GetComponent<GameScene>();
+        // MyGameScene = GameObject.Find("SceneController").GetComponent<GameScene>();
 
         MyGameManager = GameObject.Find("GameManager").GetComponent<Game>();
         IsAIEnabled = MyGameManager.IsAIEnabled;
@@ -714,7 +714,7 @@ public class Session : MonoBehaviour
                 MainCamera.transform.localEulerAngles = Constants.LOCAL_CAM_ROT_B;
         }
 
-        MyGameScene.AddNewMoveLabel(sMoveNot);
+        // MyGameScene.AddNewMoveLabel(sMoveNot);
     }
 
     void ChangeView()
