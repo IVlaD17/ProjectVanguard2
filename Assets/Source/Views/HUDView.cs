@@ -23,7 +23,6 @@ namespace ProjectVanguard.Views
 
         // Details defining each move label.
         private float moveLabelHeight;
-        private RectTransform moveLabel;
 
         // Details defining the overall moves list.
         private float movesListHeight;
@@ -48,7 +47,6 @@ namespace ProjectVanguard.Views
             moveLabelPrefab = Resources.Load("UIElements/MoveLabel") as GameObject;
 
             movesList = movesListView.GetComponent<RectTransform>();
-            moveLabel = moveLabelPrefab.GetComponent<RectTransform>();
         }
 
         public void Hide()
