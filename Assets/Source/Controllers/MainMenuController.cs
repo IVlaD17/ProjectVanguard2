@@ -10,7 +10,7 @@ namespace ProjectVanguard.Controllers
     {
         private MainMenuView view;
 
-        public Models.Entities.Session Session { get; private set; }
+        private Models.Entities.Session session;
 
         // Start is called before the first frame update
         private void Start()
@@ -24,7 +24,7 @@ namespace ProjectVanguard.Controllers
         {
             if (Models.Entities.Game.Instance.GameState == GameState.InMenu)
             {
-                if(!view.MenuPanel.activeSelf)
+                if(!view.IsVisible())
                     view.Reset();
 
                 if (view.IsSinglePlayerPanelActive())
@@ -50,7 +50,7 @@ namespace ProjectVanguard.Controllers
             float turnTime = view.GetSinglePlayerTurnTime();
             string[] playerNames = view.GetSinglePlayerNames();
 
-            Session = new Models.Entities.Session(CreatePlayers(playerNames, 0), turnTime);
+            session = new Models.Entities.Session(CreatePlayers(playerNames, 0), turnTime);
             Models.Entities.Game.Instance.ChangeGameState(GameState.Playing);
 
             view.ToggleMainMenu();
@@ -69,7 +69,7 @@ namespace ProjectVanguard.Controllers
             float turnTime = view.GetMultiPlayerTurnTime();
             string[] playerNames = view.GetMultiPlayerNames();
 
-            Session = new Models.Entities.Session(CreatePlayers(playerNames, -1), turnTime);
+            session = new Models.Entities.Session(CreatePlayers(playerNames, -1), turnTime);
             Models.Entities.Game.Instance.ChangeGameState(GameState.Playing);
 
             view.ToggleMainMenu();

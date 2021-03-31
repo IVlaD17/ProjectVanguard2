@@ -7,41 +7,41 @@ namespace ProjectVanguard.Controllers
 {
     public class GameMenuController : MonoBehaviour
     {
-        public GameMenuView View { get; private set; }
+        private GameMenuView view;
 
         // Start is called before the first frame update
         private void Start()
         {
-            View = new GameMenuView();
-            View.ToggleModalPanel();
-            View.TogglePausedPanel();
+            view = new GameMenuView();
+            view.ToggleModalPanel();
+            view.TogglePausedPanel();
         }
 
         // Update is called once per frame
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                View.TogglePausedPanel();
+                view.TogglePausedPanel();
         }
 
         public void OnPausedPanelResumeButtonClicked()
         {
-            View.TogglePausedPanel();
+            view.TogglePausedPanel();
         }
         public void OnPausedPanelQuitButtonClicked()
         {
-            View.ToggleModalPanel();
+                view.ToggleModalPanel();
         }
 
         public void OnModalPanelYesButtonClicked()
         {
-            View.ToggleModalPanel();
-            View.TogglePausedPanel();
+            view.ToggleModalPanel();
+            view.TogglePausedPanel();
             Models.Entities.Game.Instance.ChangeGameState(GameState.InMenu);
         }
         public void OnModalPanelNoButtonClicked()
         {
-            View.ToggleModalPanel();
+            view.ToggleModalPanel();
         }
     }
 }

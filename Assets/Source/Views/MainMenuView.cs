@@ -7,7 +7,7 @@ namespace ProjectVanguard.Views
 {
     public class MainMenuView
     {
-        public GameObject MenuPanel { get; private set; }
+        private GameObject menuPanel;
 
         // Panel that is used when starting a single player game.
         private Button singlePlayerButton;
@@ -38,7 +38,7 @@ namespace ProjectVanguard.Views
 
         public MainMenuView()
         {
-            MenuPanel = GameObject.Find("MenuPanel");
+            menuPanel = GameObject.Find("MenuPanel");
 
             // Singleplayer Panel Elements
             singlePlayerPanel = GameObject.Find("SingleplayerPanel");
@@ -70,7 +70,7 @@ namespace ProjectVanguard.Views
 
         public void Reset()
         {
-            MenuPanel.SetActive(true);
+            menuPanel.SetActive(true);
 
             // Setup Singleplayer Panel Input Fields
             singlePlayerButton.interactable = true;
@@ -106,6 +106,11 @@ namespace ProjectVanguard.Views
             multiPlayerPlayButton.interactable = false;
         }
 
+        public bool IsVisible()
+        {
+            return menuPanel.activeSelf;
+        }
+
         public void DisplaySinglePlayerPanel()
         {
             singlePlayerPanel.SetActive(true);
@@ -134,7 +139,7 @@ namespace ProjectVanguard.Views
 
         public void ToggleMainMenu()
         {
-            MenuPanel.SetActive(!MenuPanel.activeSelf);
+            menuPanel.SetActive(!menuPanel.activeSelf);
         }
 
         public void UpdateSinglePlayerTimerPanel()

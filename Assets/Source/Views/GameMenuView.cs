@@ -5,24 +5,24 @@ namespace ProjectVanguard.Views
     public class GameMenuView
     {
         // Panel that shows up when the game is paused.
-        public GameObject PausedPanel { get; private set; }
+        private GameObject pausedPanel;
 
         // Confirm action modal box.
-        public GameObject ModalPanel { get; private set; }
+        private GameObject modalPanel;
 
         public GameMenuView()
         {
-            PausedPanel = GameObject.Find("PausedPanel");
-            ModalPanel = GameObject.Find("ModalPanel");
+            pausedPanel = GameObject.Find("PausedPanel");
+            modalPanel = GameObject.Find("ModalPanel");
         }
 
         public void TogglePausedPanel()
         {
-            PausedPanel.SetActive(!PausedPanel.activeSelf);
+            pausedPanel.SetActive(!pausedPanel.activeSelf);
         }
         public void ToggleModalPanel()
         {
-            ModalPanel.SetActive(!ModalPanel.activeSelf);
+            modalPanel.SetActive(!modalPanel.activeSelf);
         }
     }
 }
