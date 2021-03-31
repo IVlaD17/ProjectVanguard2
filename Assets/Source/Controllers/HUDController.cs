@@ -31,8 +31,11 @@ namespace ProjectVanguard.Controllers
         // Update is called once per frame
         void Update()
         {
-            view.UpdateGameTimeLabel(gameTime.ToString());
-            view.UpdateTurnTimeLabel(turnTime.ToString());
+            if (Models.Entities.Game.Instance.IsPlaying())
+            {
+                view.UpdateGameTimeLabel(Models.Entities.Game.Instance.GetCurrentSession().GameTime.ToString());
+                view.UpdateTurnTimeLabel(Models.Entities.Game.Instance.GetCurrentSession().TurnTime.ToString());
+            }
         }
 
         public void UpdateMovesList(string move)

@@ -37,7 +37,7 @@ namespace ProjectVanguard.Controllers
         {
             view.ToggleModalPanel();
             view.TogglePausedPanel();
-            Models.Entities.Game.Instance.ChangeGameState(GameState.InMenu);
+            Models.Entities.Game.Instance.ExitSession();
         }
         public void OnModalPanelNoButtonClicked()
         {

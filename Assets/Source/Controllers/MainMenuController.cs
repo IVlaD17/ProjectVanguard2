@@ -22,7 +22,7 @@ namespace ProjectVanguard.Controllers
         // Update is called once per frame
         private void Update()
         {
-            if (Models.Entities.Game.Instance.GameState == GameState.InMenu)
+            if (!Models.Entities.Game.Instance.IsPlaying())
             {
                 if(!view.IsVisible())
                     view.Reset();
@@ -50,8 +50,7 @@ namespace ProjectVanguard.Controllers
             float turnTime = view.GetSinglePlayerTurnTime();
             string[] playerNames = view.GetSinglePlayerNames();
 
-            session = new Models.Entities.Session(CreatePlayers(playerNames, 0), turnTime);
-            Models.Entities.Game.Instance.ChangeGameState(GameState.Playing);
+            Models.Entities.Game.Instance.CreateGameSession(playerNames, true, turnTime);
 
             view.ToggleMainMenu();
         }
@@ -69,8 +68,7 @@ namespace ProjectVanguard.Controllers
             float turnTime = view.GetMultiPlayerTurnTime();
             string[] playerNames = view.GetMultiPlayerNames();
 
-            session = new Models.Entities.Session(CreatePlayers(playerNames, -1), turnTime);
-            Models.Entities.Game.Instance.ChangeGameState(GameState.Playing);
+            Models.Entities.Game.Instance.CreateGameSession(playerNames, false, turnTime);
 
             view.ToggleMainMenu();
         }
@@ -82,20 +80,6 @@ namespace ProjectVanguard.Controllers
         public void OnExitButtonClicked()
         {
             Models.Entities.Game.Instance.ExitGame();
-        }
-
-        private Models.Entities.Player[] CreatePlayers(string[] playerNames, int aiPlayerIndex)
-        {
-            Models.Entities.Player[] players = new Models.Entities.Player[playerNames.Length];
-            for(int index = 0; index < playerNames.Length; index++)
-            {
-                if (index == aiPlayerIndex)
-                    players[index] = new Models.Entities.Player(true, playerNames[index]);
-                else
-                    players[index] = new Models.Entities.Player(false, playerNames[index]);
-            }
-
-            return players;
         }
     }
 }

@@ -6,6 +6,8 @@ namespace ProjectVanguard.Models.Entities
 {
     public class Session
     {
+        public bool HasEnded { get; private set; }
+
         public VTime GameTime { get; private set; }
         public VTime TurnTime { get; private set; }
 
@@ -13,6 +15,8 @@ namespace ProjectVanguard.Models.Entities
 
         public Session(Player[] players, float turnTime)
         {
+            HasEnded = false;
+
             GameTime = new VTime(0);
             TurnTime = new VTime(turnTime);
 
@@ -20,7 +24,12 @@ namespace ProjectVanguard.Models.Entities
             GameUpdater.AddUpdateCallback(Update);
         }
 
-        void Update()
+        public void Quit()
+        {
+            HasEnded = true;
+        }
+
+        private void Update()
         {
             
         }
