@@ -15,8 +15,8 @@ namespace ProjectVanguard.Controllers
         // Moves list state holding variables.
         private List<string> moves;
 
-        private Models.Entities.Time gameTime;
-        private Models.Entities.Time turnTime;
+        private VTime gameTime;
+        private VTime turnTime;
 
         // Start is called before the first frame update
         void Start()
@@ -24,8 +24,8 @@ namespace ProjectVanguard.Controllers
             view = new HUDView();
             moves = new List<string>();
 
-            gameTime = new Models.Entities.Time(0f);
-            turnTime = new Models.Entities.Time(0f);
+            gameTime = new VTime(0f);
+            turnTime = new VTime(0f);
         }
 
         // Update is called once per frame

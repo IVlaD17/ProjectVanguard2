@@ -2,7 +2,7 @@
 
 namespace ProjectVanguard.Models.Entities
 {
-    public class Time
+    public class VTime
     {
         private int secondsInAMinute = 60;
         private int secondsInAnHour = 3600;
@@ -12,7 +12,7 @@ namespace ProjectVanguard.Models.Entities
 
         public float Seconds { get; private set; }
 
-        public Time(float seconds)
+        public VTime(float seconds)
         {
             if (seconds >= 0)
                 Seconds = seconds;

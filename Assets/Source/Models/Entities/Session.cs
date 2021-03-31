@@ -2,15 +2,15 @@
 {
     public class Session
     {
-        public Time GameTime { get; private set; }
-        public Time TurnTime { get; private set; }
+        public VTime GameTime { get; private set; }
+        public VTime TurnTime { get; private set; }
 
         public Player[] Players { get; private set; }
 
         public Session(Player[] players, float turnTime)
         {
-            GameTime = new Time(0);
-            TurnTime = new Time(turnTime);
+            GameTime = new VTime(0);
+            TurnTime = new VTime(turnTime);
 
             Players = players;
         }
