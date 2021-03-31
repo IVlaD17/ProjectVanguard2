@@ -244,7 +244,7 @@ namespace ProjectVanguard.Views
             float turnTime = 0f;
             if (singlePlayerTimerToggle.isOn)
             {
-                turnTime = singlePlayerTimerSlider.value;
+                turnTime = singlePlayerTimerSlider.value * 60;
             }
             return turnTime;
         }
@@ -253,7 +253,7 @@ namespace ProjectVanguard.Views
             float turnTime = 0f;
             if (multiPlayerTimerToggle.isOn)
             {
-                turnTime = multiPlayerTimerSlider.value;
+                turnTime = multiPlayerTimerSlider.value * 60;
             }
             return turnTime;
         }
