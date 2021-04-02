@@ -2,6 +2,7 @@
 
 using ProjectVanguard.Views;
 using ProjectVanguard.Models;
+using ProjectVanguard.Models.Entities;
 
 namespace ProjectVanguard.Controllers
 {
@@ -20,17 +21,23 @@ namespace ProjectVanguard.Controllers
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Models.Entities.Game.Instance.IsSessionPaused() && !view.IsThePausedPanelVisible())
                 view.TogglePausedPanel();
+
+            if (Models.Entities.Game.Instance.IsSessionPlaying() && view.IsThePausedPanelVisible())
+                view.TogglePausedPanel();
+
+            if (Models.Entities.Game.Instance.IsSessionPlaying() && view.IsTheModalPanelVisible())
+                view.ToggleModalPanel();
         }
 
         public void OnPausedPanelResumeButtonClicked()
         {
-            view.TogglePausedPanel();
+            Models.Entities.Game.Instance.ResumeSession();
         }
         public void OnPausedPanelQuitButtonClicked()
         {
-                view.ToggleModalPanel();
+            view.ToggleModalPanel();
         }
 
         public void OnModalPanelYesButtonClicked()

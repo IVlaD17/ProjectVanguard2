@@ -12,18 +12,12 @@ namespace ProjectVanguard.Models.Entities
 
         public static Game Instance { get; } = new Game();
 
-        public GameState GameState { get; private set; } = GameState.InMenu;
+        public GameState GameState { get; private set; }
 
         private Game() 
         {
             sessions = new List<Session>();
-        }
-
-        public void CreateGameSession(string[] playerNames, bool isAIEnabled, float turnTime)
-        {
-            sessions.Add(new Session(CreatePlayers(playerNames, isAIEnabled), turnTime));
-            EnterSession();
-
+            GameState = GameState.InMenu;
         }
         public Session GetCurrentSession()
         {
@@ -36,6 +30,46 @@ namespace ProjectVanguard.Models.Entities
                 return null;
 
             return currentSession;
+        }
+        public void CreateGameSession(string[] playerNames, bool isAIEnabled, float turnTime)
+        {
+            sessions.Add(new Session(CreatePlayers(playerNames, isAIEnabled), turnTime));
+            EnterSession();
+
+        }
+
+        public void PauseSession()
+        {
+            Session currentSession = GetCurrentSession();
+            if (currentSession != null)
+                currentSession.Pause();
+            else
+                throw new NullReferenceException();
+        }
+        public void ResumeSession()
+        {
+            Session currentSession = GetCurrentSession();
+            if (currentSession != null)
+                currentSession.Resume();
+            else
+                throw new NullReferenceException();
+        }
+
+        public bool IsSessionPaused()
+        {
+            Session currentSession = GetCurrentSession();
+            if (currentSession != null)
+                return currentSession.SessionState == SessionState.Paused;
+            else
+                return false;
+        }
+        public bool IsSessionPlaying()
+        {
+            Session currentSession = GetCurrentSession();
+            if (currentSession != null)
+                return currentSession.SessionState == SessionState.Playing;
+            else
+                return false;
         }
 
         public string GetPlayerName(int playerNumber)
@@ -84,18 +118,9 @@ namespace ProjectVanguard.Models.Entities
 
         private Player[] CreatePlayers(string[] playerNames, bool isAIEnabled)
         {
-            int aiPlayerIndex = -1;
-            if (isAIEnabled)
-                aiPlayerIndex = 0;
-
-            Player[] players = new Player[playerNames.Length];
-            for (int index = 0; index < playerNames.Length; index++)
-            {
-                if (index == aiPlayerIndex)
-                    players[index] = new Player(true, playerNames[index]);
-                else
-                    players[index] = new Player(false, playerNames[index]);
-            }
+            Player[] players = new Player[2];
+            players[0] = new Player(playerNames[0], true, false);
+            players[1] = new Player(playerNames[1], false, isAIEnabled);
 
             return players;
         }

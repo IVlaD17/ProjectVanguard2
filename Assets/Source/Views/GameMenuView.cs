@@ -24,5 +24,14 @@ namespace ProjectVanguard.Views
         {
             modalPanel.SetActive(!modalPanel.activeSelf);
         }
+
+        public bool IsThePausedPanelVisible()
+        {
+            return pausedPanel.activeSelf;
+        }
+        public bool IsTheModalPanelVisible()
+        {
+            return modalPanel.activeSelf;
+        }
     }
 }

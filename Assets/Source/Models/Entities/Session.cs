@@ -13,6 +13,9 @@ namespace ProjectVanguard.Models.Entities
 
         public Player[] Players { get; private set; }
 
+        public SessionState SessionState { get; private set; }
+
+        // Update is called once per frame
         public Session(Player[] players, float turnTime)
         {
             HasEnded = false;
@@ -22,11 +25,24 @@ namespace ProjectVanguard.Models.Entities
 
             Players = players;
             GameUpdater.AddUpdateCallback(Update);
+
+            SessionState = SessionState.Playing;
         }
 
         public void Quit()
         {
             HasEnded = true;
+            SessionState = SessionState.GameOver;
+        }
+        public void Pause()
+        {
+            if (SessionState == SessionState.Playing)
+                SessionState = SessionState.Paused;
+        }
+        public void Resume()
+        {
+            if (SessionState == SessionState.Paused)
+                SessionState = SessionState.Playing;
         }
 
         private void Update()

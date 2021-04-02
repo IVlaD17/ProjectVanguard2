@@ -98,7 +98,6 @@
     <Compile Include="Assets\Source\Models\Systems\CheckValidator.cs" />
     <Compile Include="Assets\Source\Models\Systems\GameUpdater.cs" />
     <Compile Include="Assets\Source\Models\Systems\MoveValidator.cs" />
-    <Compile Include="Assets\Source\PlayerInput.cs" />
     <Compile Include="Assets\Source\Views\GameMenuView.cs" />
     <Compile Include="Assets\Source\Views\HUDView.cs" />
     <Compile Include="Assets\Source\Views\MainMenuView.cs" />

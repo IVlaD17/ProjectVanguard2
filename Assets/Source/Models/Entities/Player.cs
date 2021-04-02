@@ -1,14 +1,22 @@
-﻿namespace ProjectVanguard.Models.Entities
+﻿using ProjectVanguard.Models.Components;
+
+namespace ProjectVanguard.Models.Entities
 {
     public class Player
     {
-        public bool IsAIControlled { get; private set; }
         public string Name { get; private set; }
+        public bool IsActive { get; private set; }
+        public bool IsAIControlled { get; private set; }
 
-        public Player(bool isAIControlled, string name)
+        public PlayerInput PlayerInputComponent { get; private set; }
+
+        public Player(string name, bool isActive, bool isAIControlled)
         {
-            IsAIControlled = isAIControlled;
             Name = name;
+            IsActive = isActive;
+            IsAIControlled = isAIControlled;
+
+            PlayerInputComponent = new PlayerInput(this);
         }
     }
 }
