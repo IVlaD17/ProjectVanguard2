@@ -45,6 +45,7 @@ namespace ProjectVanguard.Views
             movesPanel = GameObject.Find("MovesPanel");
             movesListView = GameObject.Find("MovesListContent");
             moveLabelPrefab = Resources.Load("UIElements/MoveLabel") as GameObject;
+            moveLabelHeight = moveLabelPrefab.GetComponent<RectTransform>().rect.height;
 
             movesList = movesListView.GetComponent<RectTransform>();
         }
