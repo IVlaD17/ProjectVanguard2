@@ -6,6 +6,8 @@ using ProjectVanguard.Models;
 
 public class Piece : MonoBehaviour
 {
+    public readonly Color32 ColorLightBrown = new Color32(135, 120, 110, 255);
+    public readonly Color32 ColorDarkBrown = new Color32(55, 25, 0, 255);
     public Renderer MyRenderer { get; private set; }
     public Material WhiteMaterial { get; private set; }
     public Material BlackMaterial { get; private set; }
@@ -42,9 +44,9 @@ public class Piece : MonoBehaviour
 
         MyColor = MyPlayer.MyColor;
         if (MyColor == ChessColor.White)
-            MyRenderer.material.color = Constants.COLOR_L_BROWN;
+            MyRenderer.material.color = ColorLightBrown;
         else
-            MyRenderer.material.color = Constants.COLOR_D_BROWN;
+            MyRenderer.material.color = ColorDarkBrown;
     }
 
     // Update is called once per frame

@@ -7,6 +7,12 @@ using ProjectVanguard.Models;
 
 public class Square : MonoBehaviour
 {
+
+    public readonly Color32 ColorBlack = new Color32(0, 0, 0, 255);
+    public readonly Color32 ColorWhite = new Color32(255, 255, 255, 255);
+
+    public const int SquareSize = 20;
+
     public Renderer MyRenderer { get; private set; }
 
     public ChessColor MyColor { get; private set; }
@@ -37,12 +43,12 @@ public class Square : MonoBehaviour
             MyColor = ChessColor.White;
 
         if (MyColor == ChessColor.White)
-            MyRenderer.material.color = Constants.COLOR_WHITE;
+            MyRenderer.material.color = ColorWhite;
         else
-            MyRenderer.material.color = Constants.COLOR_BLACK;
+            MyRenderer.material.color = ColorBlack;
 
-        transform.localScale = new Vector3(Constants.SQUARE_SIZE, 1, Constants.SQUARE_SIZE);
-        transform.position = new Vector3(Constants.SQUARE_SIZE * col, 10, Constants.SQUARE_SIZE * row);
+        transform.localScale = new Vector3(SquareSize, 1, SquareSize);
+        transform.position = new Vector3(SquareSize * col, 10, SquareSize * row);
     }
 
     // Update is called once per frame

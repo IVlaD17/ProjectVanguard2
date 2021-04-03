@@ -7,7 +7,19 @@ using ProjectVanguard.Models;
 
 public class Session : MonoBehaviour
 {
-    // public GameScene MyGameScene { get; private set; }
+    public const int NumberOfRows = 8;
+    public const int NumberOfCols = 8;
+    public const int NumberOfPlayers = 2;
+
+    public readonly Vector3 LocalCameraPosition = new Vector3(0, 0.5f, 0);
+    public readonly Vector3 LocalCameraPositionRotationW = new Vector3(0, 0, 0);
+    public readonly Vector3 LocalCameraPositionRotationB = new Vector3(0, -180, 0);
+
+
+    public static Vector3 TopCamPosW = new Vector3(0, 3, 5.5f);
+    public static Vector3 TopCamRotW = new Vector3(90, 0, 0);
+    public static Vector3 TopCamPosB = new Vector3(0, 3, -5.5f);
+    public static Vector3 TopCamRotB = new Vector3(90, -180, 0);
 
     public Game MyGameManager { get; private set; }
     public bool IsAIEnabled { get; private set; }
@@ -47,10 +59,10 @@ public class Session : MonoBehaviour
 
         MySessionState = SessionState.Paused;
 
-        Board = new Square[Constants.NUMBER_OF_ROWS, Constants.NUMBER_OF_COLS];
-        for(int rowIndex = 0; rowIndex < Constants.NUMBER_OF_ROWS; rowIndex++)
+        Board = new Square[NumberOfRows, NumberOfCols];
+        for(int rowIndex = 0; rowIndex < NumberOfRows; rowIndex++)
         {
-            for(int colIndex = 0; colIndex < Constants.NUMBER_OF_COLS; colIndex++)
+            for(int colIndex = 0; colIndex < NumberOfCols; colIndex++)
             {
                 char rowNumber = (char)(rowIndex + 49);
                 char colLetter = (char)(colIndex + 97);
@@ -66,28 +78,28 @@ public class Session : MonoBehaviour
 
         History = new List<Square[,]>();
 
-        Players = new Player[Constants.NUMBER_OF_PLAYERS];
+        Players = new Player[NumberOfPlayers];
         GameObject playerObject = GameObject.Find("WhitePlayer");
         if (playerObject != null)
             Players[0] = playerObject.GetComponent<Player>();
         else
-            Debug.Log(Constants.NO_PLAYER_OBJECT_FOUND + "WhitePlayer");
+            Debug.Log("ERROR!!! Failed to find Game Object named WhitePlayer");
 
 
         playerObject = GameObject.Find("BlackPlayer");
         if (playerObject != null)
             Players[1] = playerObject.GetComponent<Player>();
         else
-            Debug.Log(Constants.NO_PLAYER_OBJECT_FOUND + "WhitePlayer");
+            Debug.Log("ERROR!!! Failed to find Game Object named BlackPlayer");
 
         foreach (Player player in Players)
         {
             for (int pieceIndex = 0; pieceIndex < player.Pieces.Count; pieceIndex++)
             {
                 if (player.name == "WhitePlayer")
-                    player.Pieces[pieceIndex].UpdatePosition(Board[pieceIndex / Constants.NUMBER_OF_COLS, pieceIndex % Constants.NUMBER_OF_ROWS]);
+                    player.Pieces[pieceIndex].UpdatePosition(Board[pieceIndex / NumberOfCols, pieceIndex % NumberOfRows]);
                 else
-                    player.Pieces[pieceIndex].UpdatePosition(Board[Constants.NUMBER_OF_COLS - pieceIndex / Constants.NUMBER_OF_COLS - 1, pieceIndex % Constants.NUMBER_OF_ROWS]);
+                    player.Pieces[pieceIndex].UpdatePosition(Board[NumberOfCols - pieceIndex / NumberOfCols - 1, pieceIndex % NumberOfRows]);
             }
         }
 
@@ -290,7 +302,7 @@ public class Session : MonoBehaviour
                 int col = clicked.name[0] - 97;
                 int row = clicked.name[1] - 49;
 
-                if (col >= 0 && col < Constants.NUMBER_OF_COLS && row >= 0 && row < Constants.NUMBER_OF_ROWS)
+                if (col >= 0 && col < NumberOfCols && row >= 0 && row < NumberOfRows)
                     return Board[row, col];
             }
         }
@@ -314,7 +326,7 @@ public class Session : MonoBehaviour
 
     Player GetActivePlayer()
     {
-        for (int playerIndex = 0; playerIndex < Constants.NUMBER_OF_PLAYERS; playerIndex++)
+        for (int playerIndex = 0; playerIndex < NumberOfPlayers; playerIndex++)
         {
             if (Players[playerIndex].IsActive)
                 return Players[playerIndex];
@@ -682,7 +694,7 @@ public class Session : MonoBehaviour
             playerIndex++;
 
         int newPlayerIndex;
-        if (playerIndex == Constants.NUMBER_OF_PLAYERS - 1)
+        if (playerIndex == NumberOfPlayers - 1)
             newPlayerIndex = 0;
         else
             newPlayerIndex = playerIndex + 1;
@@ -696,22 +708,22 @@ public class Session : MonoBehaviour
         {
             if (newPlayerIndex == 0)
             {
-                MainCamera.transform.localPosition = Constants.TOP_CAM_POS_W;
-                MainCamera.transform.localEulerAngles = Constants.TOP_CAM_ROT_W;
+                MainCamera.transform.localPosition = TopCamPosW;
+                MainCamera.transform.localEulerAngles = TopCamRotW;
             }
             else
             {
-                MainCamera.transform.localPosition = Constants.TOP_CAM_POS_B;
-                MainCamera.transform.localEulerAngles = Constants.TOP_CAM_ROT_B;
+                MainCamera.transform.localPosition = TopCamPosB;
+                MainCamera.transform.localEulerAngles = TopCamRotB;
             }
         }
         else
         {
-            MainCamera.transform.localPosition = Constants.LOCAL_CAM_POS;
+            MainCamera.transform.localPosition = LocalCameraPosition;
             if (newPlayerIndex == 0)
-                MainCamera.transform.localEulerAngles = Constants.LOCAL_CAM_ROT_W;
+                MainCamera.transform.localEulerAngles = LocalCameraPositionRotationW;
             else
-                MainCamera.transform.localEulerAngles = Constants.LOCAL_CAM_ROT_B;
+                MainCamera.transform.localEulerAngles = LocalCameraPositionRotationB;
         }
 
         // MyGameScene.AddNewMoveLabel(sMoveNot);
@@ -725,22 +737,22 @@ public class Session : MonoBehaviour
         {
             if(activePlayer.name.Contains("White"))
             {
-                MainCamera.transform.localPosition = Constants.TOP_CAM_POS_W;
-                MainCamera.transform.localEulerAngles = Constants.TOP_CAM_ROT_W;
+                MainCamera.transform.localPosition = TopCamPosW;
+                MainCamera.transform.localEulerAngles = TopCamRotW;
             }
             else
             {
-                MainCamera.transform.localPosition = Constants.TOP_CAM_POS_B;
-                MainCamera.transform.localEulerAngles = Constants.TOP_CAM_ROT_B;
+                MainCamera.transform.localPosition = TopCamPosB;
+                MainCamera.transform.localEulerAngles = TopCamRotB;
             }
         }
         else
         {
-            MainCamera.transform.localPosition = Constants.LOCAL_CAM_POS;
+            MainCamera.transform.localPosition = LocalCameraPosition;
             if(activePlayer.name.Contains("White"))
-                MainCamera.transform.localEulerAngles = Constants.LOCAL_CAM_ROT_W;
+                MainCamera.transform.localEulerAngles = LocalCameraPositionRotationW;
             else
-                MainCamera.transform.localEulerAngles = Constants.LOCAL_CAM_ROT_B;
+                MainCamera.transform.localEulerAngles = LocalCameraPositionRotationB;
         }
     }
 

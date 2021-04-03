@@ -6,6 +6,10 @@ using ProjectVanguard.Models;
 
 public class Player : MonoBehaviour
 {
+    public readonly Color32 ColorYellow = new Color32(250, 185, 0, 255);
+    public readonly Color32 ColorLightBrown = new Color32(135, 120, 110, 255);
+    public readonly Color32 ColorDarkBrown = new Color32(55, 25, 0, 255);
+
     [Header("Pieces")]
     public GameObject PawnPrefab;
     public GameObject RookPrefab;
@@ -105,15 +109,15 @@ public class Player : MonoBehaviour
     public void SelectPiece(Piece selectedPiece)
     {
         SelectedPiece = selectedPiece;
-        SelectedPiece.MyRenderer.material.color = Constants.COLOR_YELLOW;
+        SelectedPiece.MyRenderer.material.color = ColorYellow;
     }
 
     public void DeselectPiece()
     {
         if (name == "WhitePlayer")
-            SelectedPiece.MyRenderer.material.color = Constants.COLOR_L_BROWN;
+            SelectedPiece.MyRenderer.material.color = ColorLightBrown;
         else
-            SelectedPiece.MyRenderer.material.color = Constants.COLOR_D_BROWN;
+            SelectedPiece.MyRenderer.material.color = ColorDarkBrown;
         SelectedPiece = null;
     }
 }

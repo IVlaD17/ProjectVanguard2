@@ -6,6 +6,11 @@ using ProjectVanguard.Models;
 
 public class ViewController : MonoBehaviour
 {
+    public static float MapMinX = -15f;
+    public static float MapMaxX = 15f;
+    public static float MapMinY = -15f;
+    public static float MapMaxY = 15f;
+
     string gameManagerObjectName = "GameManager";
 
     public Session MySession { get; private set; }
@@ -63,17 +68,17 @@ public class ViewController : MonoBehaviour
             {              
                 transform.Translate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
 
-                if (transform.localPosition.x < Constants.MAP_MIN_X)
-                    transform.localPosition = new Vector3(Constants.MAP_MIN_X, transform.localPosition.y, transform.localPosition.z);
+                if (transform.localPosition.x < MapMinX)
+                    transform.localPosition = new Vector3(MapMinX, transform.localPosition.y, transform.localPosition.z);
 
-                if (transform.localPosition.x > Constants.MAP_MAX_X)
-                    transform.localPosition = new Vector3(Constants.MAP_MAX_X, transform.localPosition.y, transform.localPosition.z);
+                if (transform.localPosition.x > MapMaxX)
+                    transform.localPosition = new Vector3(MapMaxX, transform.localPosition.y, transform.localPosition.z);
 
-                if (transform.localPosition.z < Constants.MAP_MIN_Y)
-                    transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, Constants.MAP_MIN_Y);
+                if (transform.localPosition.z < MapMinY)
+                    transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, MapMinY);
 
-                if (transform.localPosition.z > Constants.MAP_MAX_Y)
-                    transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, Constants.MAP_MAX_Y);
+                if (transform.localPosition.z > MapMaxY)
+                    transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, MapMaxY);
             }
         }
     }
