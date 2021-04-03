@@ -119,8 +119,8 @@ namespace ProjectVanguard.Models.Entities
         private Player[] CreatePlayers(string[] playerNames, bool isAIEnabled)
         {
             Player[] players = new Player[2];
-            players[0] = new Player(playerNames[0], true, false);
-            players[1] = new Player(playerNames[1], false, isAIEnabled);
+            players[0] = new Player(playerNames[0], 1, true, false);
+            players[1] = new Player(playerNames[1], 2, false, isAIEnabled);
 
             return players;
         }

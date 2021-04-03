@@ -22,7 +22,8 @@ namespace ProjectVanguard.Models.Components
             {
                 if (Input.GetKeyUp(KeyCode.V))
                 {
-                    //ChangeView();
+                    if (Entities.Game.Instance.IsSessionPlaying())
+                        Player.ToggleViews();
                 }
 
                 if (Input.GetKeyUp(KeyCode.Escape))

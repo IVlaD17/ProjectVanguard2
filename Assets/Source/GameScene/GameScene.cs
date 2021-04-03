@@ -129,11 +129,6 @@ public class GameScene : MonoBehaviour
         }
     }
 
-    public void OnResumeButtonClicked()
-    {
-        mySessionManager.ResumeGame();
-    }
-
     public void OnQuitButtonClicked()
     {
         PopupPanel.SetActive(true);

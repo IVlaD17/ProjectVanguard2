@@ -20,6 +20,15 @@ namespace ProjectVanguard.Models.Components
         public const float MapMinY = -15f;
         public const float MapMinX = -15f;
 
+        public readonly Vector3 LocalCameraPosition = new Vector3(0, 0.5f, 0);
+        public readonly Vector3 LocalCameraPositionRotationWhite = new Vector3(0, 0, 0);
+        public readonly Vector3 LocalCameraPositionRotationBlack = new Vector3(0, -180, 0);
+
+        public readonly Vector3 TopCameraPositionWhite = new Vector3(0, 3, 5.5f);
+        public readonly Vector3 TopCameraRotationWhite = new Vector3(90, 0, 0);
+        public readonly Vector3 TopCameraPositionBlack = new Vector3(0, 3, -5.5f);
+        public readonly Vector3 TopCameraRotationBlack = new Vector3(90, -180, 0);
+
         public Camera Camera { get; private set; }
         public Entities.Player Player { get; private set; }
         public CameraControlAxes Axes { get; private set; }
@@ -90,6 +99,41 @@ namespace ProjectVanguard.Models.Components
             {
                 if (Cursor.lockState != CursorLockMode.Confined)
                     Cursor.lockState = CursorLockMode.Confined;
+            }
+        }
+
+        public void ToggleViews()
+        {
+            if (Axes == CameraControlAxes.VerticalAndHorizontal)
+                Axes = CameraControlAxes.TopDown;
+            else if (Axes == CameraControlAxes.TopDown)
+                Axes = CameraControlAxes.VerticalAndHorizontal;
+        }
+        public void ResetCamera()
+        {
+            if (Axes == CameraControlAxes.TopDown)
+            {
+                if (Player.ChessColor == ChessColor.White)
+                {
+                    Camera.transform.localPosition = TopCameraPositionWhite;
+                    Camera.transform.localEulerAngles = TopCameraRotationWhite;
+                }
+                
+                if(Player.ChessColor == ChessColor.Black)
+                {
+                    Camera.transform.localPosition = TopCameraPositionBlack;
+                    Camera.transform.localEulerAngles = TopCameraRotationBlack;
+                }
+            }
+
+            if(Axes == CameraControlAxes.VerticalAndHorizontal)
+            {
+                Camera.transform.localPosition = LocalCameraPosition;
+                if (Player.ChessColor == ChessColor.White)
+                    Camera.transform.localEulerAngles = LocalCameraPositionRotationWhite;
+
+                if (Player.ChessColor == ChessColor.Black)
+                    Camera.transform.localEulerAngles = LocalCameraPositionRotationBlack;
             }
         }
     }

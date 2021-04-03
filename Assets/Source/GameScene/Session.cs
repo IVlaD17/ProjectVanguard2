@@ -132,12 +132,6 @@ public class Session : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyUp(KeyCode.V))
-                ChangeView();
-
-            if (Input.GetKeyUp(KeyCode.Escape))
-                PauseGame();
-
             // If it is not the AI's turn
             if (!activePlayer.IsAI)
             {
@@ -722,44 +716,5 @@ public class Session : MonoBehaviour
         }
 
         // MyGameScene.AddNewMoveLabel(sMoveNot);
-    }
-
-    void ChangeView()
-    {      
-        Player activePlayer = GetActivePlayer();
-        MyViewController.ToggleViews();
-        if (MyViewController.Axes == CameraControlAxes.TopDown)
-        {
-            if(activePlayer.name.Contains("White"))
-            {
-                MainCamera.transform.localPosition = TopCamPosW;
-                MainCamera.transform.localEulerAngles = TopCamRotW;
-            }
-            else
-            {
-                MainCamera.transform.localPosition = TopCamPosB;
-                MainCamera.transform.localEulerAngles = TopCamRotB;
-            }
-        }
-        else
-        {
-            MainCamera.transform.localPosition = LocalCameraPosition;
-            if(activePlayer.name.Contains("White"))
-                MainCamera.transform.localEulerAngles = LocalCameraPositionRotationW;
-            else
-                MainCamera.transform.localEulerAngles = LocalCameraPositionRotationB;
-        }
-    }
-
-    public void PauseGame()
-    {
-        MySessionState = SessionState.Paused;
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-    public void ResumeGame()
-    {
-        MySessionState = SessionState.Playing;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 }
