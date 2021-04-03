@@ -37,6 +37,17 @@ namespace ProjectVanguard.Models.Entities
         {
             if (value >= 0)
                 Seconds -= value;
+
+            if (Seconds < 0)
+                Seconds = 0;
+        }
+
+        public bool IsZero()
+        {
+            if (Seconds == 0)
+                return true;
+            else
+                return false;
         }
 
         public override string ToString()

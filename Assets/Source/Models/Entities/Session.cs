@@ -9,7 +9,9 @@ namespace ProjectVanguard.Models.Entities
         public bool HasEnded { get; private set; }
 
         public VTime GameTime { get; private set; }
+
         public VTime TurnTime { get; private set; }
+        public float DefaultTurnTime { get; private set; }
 
         public Player[] Players { get; private set; }
 
@@ -21,8 +23,10 @@ namespace ProjectVanguard.Models.Entities
             HasEnded = false;
 
             GameTime = new VTime(0);
-            TurnTime = new VTime(turnTime);
 
+            DefaultTurnTime = turnTime;
+            TurnTime = new VTime(turnTime);
+            
             Players = players;
             GameUpdater.AddUpdateCallback(Update);
 
@@ -47,7 +51,23 @@ namespace ProjectVanguard.Models.Entities
 
         private void Update()
         {
-            
+            if(SessionState == SessionState.Playing)
+            {
+                GameTime.IncreaseTime(Time.deltaTime);
+
+                if (DefaultTurnTime != 0)
+                {
+                    if (!TurnTime.IsZero())
+                    {
+                        TurnTime.DecreaseTime(Time.deltaTime);
+                    }
+                    else
+                    {
+                        // Change Turns
+                        TurnTime = new VTime(DefaultTurnTime);
+                    }
+                }
+            }
         }
     }
 }
