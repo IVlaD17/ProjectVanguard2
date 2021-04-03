@@ -20,6 +20,9 @@ namespace ProjectVanguard.Models.Components
         {
             if (Player.IsActive)
             {
+                if (Entities.Game.Instance.IsSessionPlaying())
+                    Player.LookAround(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
                 if (Input.GetKeyUp(KeyCode.V))
                 {
                     if (Entities.Game.Instance.IsSessionPlaying())

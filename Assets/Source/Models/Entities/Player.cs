@@ -27,6 +27,11 @@ namespace ProjectVanguard.Models.Entities
             PlayerInputComponent = new PlayerInput(this);
         }
 
+        public void LookAround(float inputAxisX, float inputAxisY)
+        {
+            PlayerViewComponent.AdjustCamera(inputAxisX, inputAxisY);
+        }
+
         public void ToggleViews()
         {
             PlayerViewComponent.ToggleViews();

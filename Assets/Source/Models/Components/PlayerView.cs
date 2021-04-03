@@ -7,8 +7,6 @@ namespace ProjectVanguard.Models.Components
 {
     public class PlayerView
     {
-        private float rotationX;
-
         private float sensitivityHor = 1.0f;
         private float sensitivityVert = 1.0f;
 
@@ -45,56 +43,13 @@ namespace ProjectVanguard.Models.Components
 
         // Update is called once per frame
         void Update()
-        {
+        {            
             if (Entities.Game.Instance.IsSessionPlaying())
             {
                 if (Cursor.lockState != CursorLockMode.Locked)
                     Cursor.lockState = CursorLockMode.Locked;
-
-                if (Player.IsActive)
-                {
-                    // Horizontal Movement
-                    if (Axes == CameraControlAxes.Horizontal)
-                    {
-                        Camera.transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityHor, 0);
-                    }
-                    // Vertical Movement
-                    else if (Axes == CameraControlAxes.Vertical)
-                    {
-                        rotationX -= Input.GetAxis("Mouse Y") * sensitivityVert;
-                        rotationX = Mathf.Clamp(rotationX, minimumVert, maximumVert);
-
-                        float rotationY = Camera.transform.localEulerAngles.y;
-                        Camera.transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
-                    }
-                    else if (Axes == CameraControlAxes.VerticalAndHorizontal)
-                    {
-                        rotationX -= Input.GetAxis("Mouse Y") * sensitivityVert;
-                        rotationX = Mathf.Clamp(rotationX, minimumVert, maximumVert);
-
-                        float delta = Input.GetAxis("Mouse X") * sensitivityHor;
-                        float rotationY = Camera.transform.localEulerAngles.y + delta;
-
-                        Camera.transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
-                    }
-                    else if (Axes == CameraControlAxes.TopDown)
-                    {
-                        Camera.transform.Translate(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0);
-
-                        if (Camera.transform.localPosition.x < MapMinX)
-                            Camera.transform.localPosition = new Vector3(MapMinX, Camera.transform.localPosition.y, Camera.transform.localPosition.z);
-
-                        if (Camera.transform.localPosition.x > MapMaxX)
-                            Camera.transform.localPosition = new Vector3(MapMaxX, Camera.transform.localPosition.y, Camera.transform.localPosition.z);
-
-                        if (Camera.transform.localPosition.z < MapMinY)
-                            Camera.transform.localPosition = new Vector3(Camera.transform.localPosition.x, Camera.transform.localPosition.y, MapMinY);
-
-                        if (Camera.transform.localPosition.z > MapMaxY)
-                            Camera.transform.localPosition = new Vector3(Camera.transform.localPosition.x, Camera.transform.localPosition.y, MapMaxY);
-                    }
-                }
             }
+
             if(Entities.Game.Instance.IsSessionPaused())
             {
                 if (Cursor.lockState != CursorLockMode.Confined)
@@ -134,6 +89,51 @@ namespace ProjectVanguard.Models.Components
 
                 if (Player.ChessColor == ChessColor.Black)
                     Camera.transform.localEulerAngles = LocalCameraPositionRotationBlack;
+            }
+        }
+        public void AdjustCamera(float inputAxisX, float inputAxisY)
+        {
+            // Horizontal Movement
+            if (Axes == CameraControlAxes.Horizontal)
+            {
+                Camera.transform.Rotate(0, inputAxisX * sensitivityHor, 0);
+            }
+            // Vertical Movement
+            else if (Axes == CameraControlAxes.Vertical)
+            {
+                float deltaX = inputAxisY * sensitivityVert;
+                float rotationX = (Camera.transform.localEulerAngles.x > 180) ? Camera.transform.localEulerAngles.x - 360 : Camera.transform.localEulerAngles.x;
+                rotationX = Mathf.Clamp(rotationX - deltaX, minimumVert, maximumVert);
+
+                float rotationY = Camera.transform.localEulerAngles.y;
+                Camera.transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+            }
+            else if (Axes == CameraControlAxes.VerticalAndHorizontal)
+            {
+                float deltaX = inputAxisY * sensitivityVert;
+                float rotationX = (Camera.transform.localEulerAngles.x > 180) ? Camera.transform.localEulerAngles.x - 360 : Camera.transform.localEulerAngles.x;
+                rotationX = Mathf.Clamp(rotationX - deltaX, minimumVert, maximumVert);
+
+                float deltaY = inputAxisX * sensitivityHor;
+                float rotationY = Camera.transform.localEulerAngles.y + deltaY;
+
+                Camera.transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+            }
+            else if (Axes == CameraControlAxes.TopDown)
+            {
+                Camera.transform.Translate(inputAxisX, inputAxisY, 0);
+
+                if (Camera.transform.localPosition.x < MapMinX)
+                    Camera.transform.localPosition = new Vector3(MapMinX, Camera.transform.localPosition.y, Camera.transform.localPosition.z);
+
+                if (Camera.transform.localPosition.x > MapMaxX)
+                    Camera.transform.localPosition = new Vector3(MapMaxX, Camera.transform.localPosition.y, Camera.transform.localPosition.z);
+
+                if (Camera.transform.localPosition.z < MapMinY)
+                    Camera.transform.localPosition = new Vector3(Camera.transform.localPosition.x, Camera.transform.localPosition.y, MapMinY);
+
+                if (Camera.transform.localPosition.z > MapMaxY)
+                    Camera.transform.localPosition = new Vector3(Camera.transform.localPosition.x, Camera.transform.localPosition.y, MapMaxY);
             }
         }
     }
