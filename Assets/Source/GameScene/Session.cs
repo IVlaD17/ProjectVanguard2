@@ -281,11 +281,6 @@ public class Session : MonoBehaviour
                 MySessionState = SessionState.Stalemate;
             }
         }
-        else if (MySessionState == SessionState.Paused)
-        {
-            //if (Input.GetKeyUp(KeyCode.Escape))
-            //    ResumeGame();
-        }
     }
     
     Square GetSquare(GameObject clicked)

@@ -8,6 +8,7 @@ namespace ProjectVanguard.Models.Entities
         public bool IsActive { get; private set; }
         public bool IsAIControlled { get; private set; }
 
+        public PlayerView PlayerViewComponent { get; private set; }
         public PlayerInput PlayerInputComponent { get; private set; }
 
         public Player(string name, bool isActive, bool isAIControlled)
@@ -16,6 +17,7 @@ namespace ProjectVanguard.Models.Entities
             IsActive = isActive;
             IsAIControlled = isAIControlled;
 
+            PlayerViewComponent = new PlayerView(this);
             PlayerInputComponent = new PlayerInput(this);
         }
     }
