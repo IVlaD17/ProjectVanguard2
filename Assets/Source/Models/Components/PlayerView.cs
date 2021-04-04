@@ -7,6 +7,9 @@ namespace ProjectVanguard.Models.Components
 {
     public class PlayerView
     {
+        private const string mainCameraTag = "MainCamera";
+        private const string otherCameraTag = "OtherCamera";
+
         private float sensitivityHor = 1.0f;
         private float sensitivityVert = 1.0f;
 
@@ -27,6 +30,7 @@ namespace ProjectVanguard.Models.Components
         public readonly Vector3 TopCameraPositionBlack = new Vector3(0, 3, -5.5f);
         public readonly Vector3 TopCameraRotationBlack = new Vector3(90, -180, 0);
 
+        public Camera MainCamera { get; private set; }
         public Camera Camera { get; private set; }
         public Entities.Player Player { get; private set; }
         public CameraControlAxes Axes { get; private set; }
@@ -36,22 +40,51 @@ namespace ProjectVanguard.Models.Components
             Player = player;
             Cursor.lockState = CursorLockMode.Locked;
             Axes = CameraControlAxes.VerticalAndHorizontal;
-            Camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
+            MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+            Camera = Player.PlayerObject.GetComponentInChildren<Camera>();
 
             GameUpdater.AddUpdateCallback(Update);
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {            
             if (Entities.Game.Instance.IsSessionPlaying())
             {
+                if(Player.IsActive)
+                {
+                    Debug.Log($"Session is playing and {Player.PlayerObject} is active.");
+                    if (!Camera.gameObject.activeSelf)
+                        Camera.gameObject.SetActive(true);
+
+                    if (MainCamera.gameObject.activeSelf)
+                        MainCamera.gameObject.SetActive(false);
+                }
+                else
+                {
+                    Camera.gameObject.SetActive(false);
+                }
+
                 if (Cursor.lockState != CursorLockMode.Locked)
                     Cursor.lockState = CursorLockMode.Locked;
             }
 
             if(Entities.Game.Instance.IsSessionPaused())
             {
+                if(Player.IsActive)
+                {
+                    if (Camera.gameObject.activeSelf)
+                        Camera.gameObject.SetActive(false);
+
+                    if (!MainCamera.gameObject.activeSelf)
+                        MainCamera.gameObject.SetActive(true);
+                }
+                else
+                {
+                    Camera.gameObject.SetActive(false);
+                }
+
                 if (Cursor.lockState != CursorLockMode.Confined)
                     Cursor.lockState = CursorLockMode.Confined;
             }

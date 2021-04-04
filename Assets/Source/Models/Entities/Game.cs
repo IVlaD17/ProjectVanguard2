@@ -58,7 +58,7 @@ namespace ProjectVanguard.Models.Entities
         public bool IsSessionPaused()
         {
             Session currentSession = GetCurrentSession();
-            if (currentSession != null)
+            if (currentSession != null && !currentSession.HasEnded)
                 return currentSession.SessionState == SessionState.Paused;
             else
                 return false;
@@ -66,7 +66,7 @@ namespace ProjectVanguard.Models.Entities
         public bool IsSessionPlaying()
         {
             Session currentSession = GetCurrentSession();
-            if (currentSession != null)
+            if (currentSession != null && !currentSession.HasEnded)
                 return currentSession.SessionState == SessionState.Playing;
             else
                 return false;

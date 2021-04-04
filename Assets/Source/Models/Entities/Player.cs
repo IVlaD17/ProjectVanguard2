@@ -1,4 +1,6 @@
-﻿using ProjectVanguard.Models.Components;
+﻿using UnityEngine;
+
+using ProjectVanguard.Models.Components;
 
 namespace ProjectVanguard.Models.Entities
 {
@@ -8,6 +10,8 @@ namespace ProjectVanguard.Models.Entities
         public bool IsActive { get; private set; }
         public bool IsAIControlled { get; private set; }
         public ChessColor ChessColor { get; private set; }
+
+        public GameObject PlayerObject { get; private set; }
 
         public PlayerView PlayerViewComponent { get; private set; }
         public PlayerInput PlayerInputComponent { get; private set; }
@@ -22,6 +26,8 @@ namespace ProjectVanguard.Models.Entities
                 ChessColor = ChessColor.White;
             else
                 ChessColor = ChessColor.Black;
+
+            PlayerObject = GameObject.Find($"{ChessColor}Player");
 
             PlayerViewComponent = new PlayerView(this);
             PlayerInputComponent = new PlayerInput(this);
