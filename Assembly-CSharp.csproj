@@ -85,6 +85,7 @@
     <Compile Include="Assets\Source\Models\Components\PlayerInput.cs" />
     <Compile Include="Assets\Source\Models\Components\PlayerView.cs" />
     <Compile Include="Assets\Source\Models\Entities\Game.cs" />
+    <Compile Include="Assets\Source\Models\Entities\Move.cs" />
     <Compile Include="Assets\Source\Models\Entities\Piece.cs" />
     <Compile Include="Assets\Source\Models\Entities\Player.cs" />
     <Compile Include="Assets\Source\Models\Entities\Session.cs" />
