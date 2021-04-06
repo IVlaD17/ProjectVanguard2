@@ -12,18 +12,7 @@ public class Session : MonoBehaviour
     public const int NumberOfCols = 8;
     public const int NumberOfPlayers = 2;
 
-    public readonly Vector3 LocalCameraPosition = new Vector3(0, 0.5f, 0);
-    public readonly Vector3 LocalCameraPositionRotationW = new Vector3(0, 0, 0);
-    public readonly Vector3 LocalCameraPositionRotationB = new Vector3(0, -180, 0);
-
-
-    public static Vector3 TopCamPosW = new Vector3(0, 3, 5.5f);
-    public static Vector3 TopCamRotW = new Vector3(90, 0, 0);
-    public static Vector3 TopCamPosB = new Vector3(0, 3, -5.5f);
-    public static Vector3 TopCamRotB = new Vector3(90, -180, 0);
-
     public Camera MainCamera;
-    public ViewController MyViewController { get; private set; }
 
     public SessionState MySessionState { get; private set; }
 
@@ -41,8 +30,6 @@ public class Session : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MyViewController = MainCamera.GetComponent<ViewController>();
-
         MySessionState = SessionState.Paused;
 
         Board = new Square[NumberOfRows, NumberOfCols];
@@ -657,31 +644,5 @@ public class Session : MonoBehaviour
 
         Players[playerIndex].ToggleActive();
         Players[newPlayerIndex].ToggleActive();
-
-        MainCamera.transform.parent = Players[newPlayerIndex].gameObject.transform;
-
-        if (MyViewController.Axes == CameraControlAxes.TopDown)
-        {
-            if (newPlayerIndex == 0)
-            {
-                MainCamera.transform.localPosition = TopCamPosW;
-                MainCamera.transform.localEulerAngles = TopCamRotW;
-            }
-            else
-            {
-                MainCamera.transform.localPosition = TopCamPosB;
-                MainCamera.transform.localEulerAngles = TopCamRotB;
-            }
-        }
-        else
-        {
-            MainCamera.transform.localPosition = LocalCameraPosition;
-            if (newPlayerIndex == 0)
-                MainCamera.transform.localEulerAngles = LocalCameraPositionRotationW;
-            else
-                MainCamera.transform.localEulerAngles = LocalCameraPositionRotationB;
-        }
-
-        // MyGameScene.AddNewMoveLabel(sMoveNot);
     }
 }

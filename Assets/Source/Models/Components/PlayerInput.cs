@@ -20,21 +20,21 @@ namespace ProjectVanguard.Models.Components
         {
             if (Player.IsActive)
             {
-                if (Entities.Game.Instance.IsSessionPlaying())
+                if (Game.Instance.IsSessionPlaying())
                     Player.LookAround(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
                 if (Input.GetKeyUp(KeyCode.V))
                 {
-                    if (Entities.Game.Instance.IsSessionPlaying())
+                    if (Game.Instance.IsSessionPlaying())
                         Player.ToggleViews();
                 }
 
                 if (Input.GetKeyUp(KeyCode.Escape))
                 {
-                    if (Entities.Game.Instance.IsSessionPaused())
-                        Entities.Game.Instance.ResumeSession();
-                    else if (Entities.Game.Instance.IsSessionPlaying())
-                        Entities.Game.Instance.PauseSession();
+                    if (Game.Instance.IsSessionPaused())
+                        Game.Instance.ResumeSession();
+                    else if (Game.Instance.IsSessionPlaying())
+                        Game.Instance.PauseSession();
                 }
 
                 // Left Click

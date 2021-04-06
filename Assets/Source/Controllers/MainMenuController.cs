@@ -22,7 +22,7 @@ namespace ProjectVanguard.Controllers
         // Update is called once per frame
         private void Update()
         {
-            if (!Models.Entities.Game.Instance.IsPlaying())
+            if (!Game.Instance.IsPlaying())
             {
                 if(!view.IsVisible())
                     view.Reset();
@@ -50,7 +50,7 @@ namespace ProjectVanguard.Controllers
             float turnTime = view.GetSinglePlayerTurnTime();
             string[] playerNames = view.GetSinglePlayerNames();
 
-            Models.Entities.Game.Instance.CreateGameSession(playerNames, true, turnTime);
+            Game.Instance.CreateGameSession(playerNames, true, turnTime);
 
             view.ToggleMainMenu();
         }
@@ -68,7 +68,7 @@ namespace ProjectVanguard.Controllers
             float turnTime = view.GetMultiPlayerTurnTime();
             string[] playerNames = view.GetMultiPlayerNames();
 
-            Models.Entities.Game.Instance.CreateGameSession(playerNames, false, turnTime);
+            Game.Instance.CreateGameSession(playerNames, false, turnTime);
 
             view.ToggleMainMenu();
         }
@@ -79,7 +79,7 @@ namespace ProjectVanguard.Controllers
 
         public void OnExitButtonClicked()
         {
-            Models.Entities.Game.Instance.ExitGame();
+            Game.Instance.ExitGame();
         }
     }
 }

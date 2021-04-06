@@ -27,19 +27,19 @@ namespace ProjectVanguard.Controllers
         // Update is called once per frame
         void Update()
         {
-            if (Models.Entities.Game.Instance.IsPlaying())
+            if (Game.Instance.IsPlaying())
             {
                 if (!view.IsVisible())
-                    view.Display(Models.Entities.Game.Instance.GetPlayerName(1), Models.Entities.Game.Instance.GetPlayerName(2));
+                    view.Display(Game.Instance.GetPlayerName(1), Game.Instance.GetPlayerName(2));
 
-                if (Models.Entities.Game.Instance.IsPlaying())
+                if (Game.Instance.IsPlaying())
                 {
-                    view.UpdateGameTimeLabel(Models.Entities.Game.Instance.GetCurrentSession().GameTime.ToString());
-                    view.UpdateTurnTimeLabel(Models.Entities.Game.Instance.GetCurrentSession().TurnTime.ToString());
+                    view.UpdateGameTimeLabel(Game.Instance.GetCurrentSession().GameTime.ToString());
+                    view.UpdateTurnTimeLabel(Game.Instance.GetCurrentSession().TurnTime.ToString());
 
-                    int recordedMovesCount = Models.Entities.Game.Instance.GetCurrentSession().Moves.Count;
+                    int recordedMovesCount = Game.Instance.GetCurrentSession().Moves.Count;
                     if (recordedMovesCount != moves.Count)
-                        UpdateMovesList(Models.Entities.Game.Instance.GetCurrentSession().Moves[recordedMovesCount - 1]);
+                        UpdateMovesList(Game.Instance.GetCurrentSession().Moves[recordedMovesCount - 1]);
                 }
             }
         }

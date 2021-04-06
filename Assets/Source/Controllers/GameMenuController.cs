@@ -21,19 +21,19 @@ namespace ProjectVanguard.Controllers
         // Update is called once per frame
         private void Update()
         {
-            if (Models.Entities.Game.Instance.IsSessionPaused() && !view.IsThePausedPanelVisible())
+            if (Game.Instance.IsSessionPaused() && !view.IsThePausedPanelVisible())
                 view.TogglePausedPanel();
 
-            if (Models.Entities.Game.Instance.IsSessionPlaying() && view.IsThePausedPanelVisible())
+            if (Game.Instance.IsSessionPlaying() && view.IsThePausedPanelVisible())
                 view.TogglePausedPanel();
 
-            if (Models.Entities.Game.Instance.IsSessionPlaying() && view.IsTheModalPanelVisible())
+            if (Game.Instance.IsSessionPlaying() && view.IsTheModalPanelVisible())
                 view.ToggleModalPanel();
         }
 
         public void OnPausedPanelResumeButtonClicked()
         {
-            Models.Entities.Game.Instance.ResumeSession();
+            Game.Instance.ResumeSession();
         }
         public void OnPausedPanelQuitButtonClicked()
         {
@@ -44,7 +44,7 @@ namespace ProjectVanguard.Controllers
         {
             view.ToggleModalPanel();
             view.TogglePausedPanel();
-            Models.Entities.Game.Instance.ExitSession();
+            Game.Instance.ExitSession();
         }
         public void OnModalPanelNoButtonClicked()
         {

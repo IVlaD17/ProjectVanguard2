@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{942CAEE8-C11F-EF99-786A-BF4081C55634}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -76,7 +75,6 @@
     <Compile Include="Assets\Source\GameScene\Rook.cs" />
     <Compile Include="Assets\Source\GameScene\Session.cs" />
     <Compile Include="Assets\Source\GameScene\Square.cs" />
-    <Compile Include="Assets\Source\GameScene\ViewController.cs" />
     <Compile Include="Assets\Source\Global\Player.cs" />
     <Compile Include="Assets\Source\Models\Components\PieceModel.cs" />
     <Compile Include="Assets\Source\Models\Components\PieceMovement.cs" />

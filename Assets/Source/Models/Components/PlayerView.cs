@@ -50,7 +50,7 @@ namespace ProjectVanguard.Models.Components
         // Update is called once per frame
         private void Update()
         {            
-            if (Entities.Game.Instance.IsSessionPlaying())
+            if (Game.Instance.IsSessionPlaying())
             {
                 if(Player.IsActive)
                 {
@@ -69,7 +69,7 @@ namespace ProjectVanguard.Models.Components
                     Cursor.lockState = CursorLockMode.Locked;
             }
 
-            if(Entities.Game.Instance.IsSessionPaused())
+            if(Game.Instance.IsSessionPaused())
             {
                 if(Player.IsActive)
                 {
