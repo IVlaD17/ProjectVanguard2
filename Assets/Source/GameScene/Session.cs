@@ -21,12 +21,6 @@ public class Session : MonoBehaviour
     public static Vector3 TopCamPosB = new Vector3(0, 3, -5.5f);
     public static Vector3 TopCamRotB = new Vector3(90, -180, 0);
 
-    public Game MyGameManager { get; private set; }
-    public bool IsTimerEnabled { get; private set; }
-    public float DefaultTurnTime { get; private set; }
-    public float TurnTime { get; private set; }
-    public float GameTime { get; private set; }
-
     public Camera MainCamera;
     public ViewController MyViewController { get; private set; }
 
@@ -46,13 +40,6 @@ public class Session : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // MyGameScene = GameObject.Find("SceneController").GetComponent<GameScene>();
-
-        MyGameManager = GameObject.Find("GameManager").GetComponent<Game>();
-        IsTimerEnabled = MyGameManager.IsTurnTimerEnabled;
-        DefaultTurnTime = MyGameManager.TurnTime;
-        TurnTime = DefaultTurnTime;
-
         MyViewController = MainCamera.GetComponent<ViewController>();
 
         MySessionState = SessionState.Paused;
@@ -102,10 +89,6 @@ public class Session : MonoBehaviour
         }
 
         Players[0].ToggleActive();
-
-        //Cursor.lockState = CursorLockMode.Locked;
-
-        GameTime = 0f;
     }
 
     // Update is called once per frame
@@ -113,19 +96,7 @@ public class Session : MonoBehaviour
     {
         if(MySessionState == SessionState.Playing)
         {
-            Player activePlayer = GetActivePlayer();
-            GameTime += Time.deltaTime;
-
-            if (IsTimerEnabled)
-            {
-                if (TurnTime >= 0)
-                    TurnTime -= Time.deltaTime;
-                else
-                {
-                    EndTurn("N/A");
-                    TurnTime = DefaultTurnTime;
-                }
-            }
+            Player activePlayer = GetActivePlayer();      
 
             // If it is not the AI's turn
             if (!activePlayer.IsAI)

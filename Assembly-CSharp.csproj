@@ -76,7 +76,6 @@
     <Compile Include="Assets\Source\GameScene\Session.cs" />
     <Compile Include="Assets\Source\GameScene\Square.cs" />
     <Compile Include="Assets\Source\GameScene\ViewController.cs" />
-    <Compile Include="Assets\Source\Global\Game.cs" />
     <Compile Include="Assets\Source\Global\Move.cs" />
     <Compile Include="Assets\Source\Global\Player.cs" />
     <Compile Include="Assets\Source\Models\Components\PieceModel.cs" />

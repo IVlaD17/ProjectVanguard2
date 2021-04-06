@@ -1675,7 +1675,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1200312883}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9405941
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5116,7 +5116,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1184835428}
-  - component: {fileID: 1184835427}
   - component: {fileID: 1184835429}
   m_Layer: 0
   m_Name: GameManager
@@ -5125,18 +5124,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1184835427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184835426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8badd967d5504f3fb9c0a910d50c0fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1184835428
 Transform:
   m_ObjectHideFlags: 0

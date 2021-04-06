@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+
+using UnityEngine;
 
 using ProjectVanguard.Models.Systems;
 
@@ -14,6 +16,7 @@ namespace ProjectVanguard.Models.Entities
 
         public VTime TurnTime { get; private set; }
         public float DefaultTurnTime { get; private set; }
+        public List<string> Moves { get; private set; }
 
         public Player[] Players { get; private set; }
 
@@ -26,7 +29,7 @@ namespace ProjectVanguard.Models.Entities
 
             HasEnded = false;
 
-            GameTime = new VTime(0);
+            GameTime = new VTime(1);
 
             DefaultTurnTime = turnTime;
             TurnTime = new VTime(turnTime);
@@ -35,6 +38,7 @@ namespace ProjectVanguard.Models.Entities
             GameUpdater.AddUpdateCallback(Update);
 
             SessionState = SessionState.Playing;
+            Moves = new List<string>();
         }
 
         public void Quit()
@@ -53,13 +57,12 @@ namespace ProjectVanguard.Models.Entities
                 SessionState = SessionState.Playing;
         }
 
-        public void EndTurn()
+        public void EndTurn(string moveNotation)
         {
             Players[activePlayerIndex % 2].EndTurn();
-            Debug.Log($"Old Active Player: {Players[activePlayerIndex % 2].Name} is {Players[activePlayerIndex % 2].IsActive}.");
             activePlayerIndex++;
             Players[activePlayerIndex % 2].StartTime();
-            Debug.Log($"New Active Player: {Players[activePlayerIndex % 2].Name} is {Players[activePlayerIndex % 2].IsActive}.");
+            Moves.Add(moveNotation);
         }
 
         private void Update()
@@ -76,7 +79,7 @@ namespace ProjectVanguard.Models.Entities
                     }
                     else
                     {
-                        EndTurn();
+                        EndTurn("N/A");
                         TurnTime = new VTime(DefaultTurnTime);
                     }
                 }

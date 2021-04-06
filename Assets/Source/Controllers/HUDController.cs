@@ -36,6 +36,10 @@ namespace ProjectVanguard.Controllers
                 {
                     view.UpdateGameTimeLabel(Models.Entities.Game.Instance.GetCurrentSession().GameTime.ToString());
                     view.UpdateTurnTimeLabel(Models.Entities.Game.Instance.GetCurrentSession().TurnTime.ToString());
+
+                    int recordedMovesCount = Models.Entities.Game.Instance.GetCurrentSession().Moves.Count;
+                    if (recordedMovesCount != moves.Count)
+                        UpdateMovesList(Models.Entities.Game.Instance.GetCurrentSession().Moves[recordedMovesCount - 1]);
                 }
             }
         }
