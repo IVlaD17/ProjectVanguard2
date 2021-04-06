@@ -94,11 +94,6 @@ public class Player : MonoBehaviour
         
     }
 
-    public void EnableAI()
-    {
-        IsAI = true;
-    }
-
     public void ToggleActive()
     {
         IsActive = !IsActive;

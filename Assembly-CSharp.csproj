@@ -67,7 +67,6 @@
     <Compile Include="Assets\Source\Controllers\HUDController.cs" />
     <Compile Include="Assets\Source\Controllers\MainMenuController.cs" />
     <Compile Include="Assets\Source\GameScene\Bishop.cs" />
-    <Compile Include="Assets\Source\GameScene\GameScene.cs" />
     <Compile Include="Assets\Source\GameScene\King.cs" />
     <Compile Include="Assets\Source\GameScene\Knight.cs" />
     <Compile Include="Assets\Source\GameScene\Pawn.cs" />

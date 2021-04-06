@@ -22,7 +22,6 @@ public class Session : MonoBehaviour
     public static Vector3 TopCamRotB = new Vector3(90, -180, 0);
 
     public Game MyGameManager { get; private set; }
-    public bool IsAIEnabled { get; private set; }
     public bool IsTimerEnabled { get; private set; }
     public float DefaultTurnTime { get; private set; }
     public float TurnTime { get; private set; }
@@ -50,7 +49,6 @@ public class Session : MonoBehaviour
         // MyGameScene = GameObject.Find("SceneController").GetComponent<GameScene>();
 
         MyGameManager = GameObject.Find("GameManager").GetComponent<Game>();
-        IsAIEnabled = MyGameManager.IsAIEnabled;
         IsTimerEnabled = MyGameManager.IsTurnTimerEnabled;
         DefaultTurnTime = MyGameManager.TurnTime;
         TurnTime = DefaultTurnTime;
@@ -108,9 +106,6 @@ public class Session : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
 
         GameTime = 0f;
-
-        if (IsAIEnabled)
-            Players[1].EnableAI();
     }
 
     // Update is called once per frame
