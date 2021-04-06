@@ -54,7 +54,6 @@ namespace ProjectVanguard.Models.Components
             {
                 if(Player.IsActive)
                 {
-                    Debug.Log($"Session is playing and {Player.PlayerObject} is active.");
                     if (!Camera.gameObject.activeSelf)
                         Camera.gameObject.SetActive(true);
 

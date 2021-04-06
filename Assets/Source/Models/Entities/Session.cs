@@ -6,6 +6,8 @@ namespace ProjectVanguard.Models.Entities
 {
     public class Session
     {
+        private int activePlayerIndex;
+
         public bool HasEnded { get; private set; }
 
         public VTime GameTime { get; private set; }
@@ -20,6 +22,8 @@ namespace ProjectVanguard.Models.Entities
         // Update is called once per frame
         public Session(Player[] players, float turnTime)
         {
+            activePlayerIndex = 0;
+
             HasEnded = false;
 
             GameTime = new VTime(0);
@@ -49,6 +53,15 @@ namespace ProjectVanguard.Models.Entities
                 SessionState = SessionState.Playing;
         }
 
+        public void EndTurn()
+        {
+            Players[activePlayerIndex % 2].EndTurn();
+            Debug.Log($"Old Active Player: {Players[activePlayerIndex % 2].Name} is {Players[activePlayerIndex % 2].IsActive}.");
+            activePlayerIndex++;
+            Players[activePlayerIndex % 2].StartTime();
+            Debug.Log($"New Active Player: {Players[activePlayerIndex % 2].Name} is {Players[activePlayerIndex % 2].IsActive}.");
+        }
+
         private void Update()
         {
             if(SessionState == SessionState.Playing)
@@ -63,7 +76,7 @@ namespace ProjectVanguard.Models.Entities
                     }
                     else
                     {
-                        // Change Turns
+                        EndTurn();
                         TurnTime = new VTime(DefaultTurnTime);
                     }
                 }
