@@ -5,8 +5,6 @@ using ProjectVanguard.Models;
 
 public class Game : MonoBehaviour
 {
-    Scene myActiveScene;
-
     public GameState MyGameState { get; private set; }
 
     public string Player1Name { get; private set; }
@@ -25,13 +23,11 @@ public class Game : MonoBehaviour
     void Start()
     {
         MyGameState = GameState.InMenu;
-        myActiveScene = SceneManager.GetActiveScene();
     }
 
     // Update is called once per frame
     void Update()
     {
-        myActiveScene = SceneManager.GetActiveScene();
         switch (MyGameState)
         {
             case GameState.Loading:
