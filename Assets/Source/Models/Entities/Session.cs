@@ -21,8 +21,7 @@ namespace ProjectVanguard.Models.Entities
         public Player[] Players { get; private set; }
 
         public SessionState SessionState { get; private set; }
-
-        // Update is called once per frame
+        
         public Session(Player[] players, float turnTime)
         {
             activePlayerIndex = 0;
@@ -65,6 +64,7 @@ namespace ProjectVanguard.Models.Entities
             Moves.Add(moveNotation);
         }
 
+        // Update is called once per frame
         private void Update()
         {
             if(SessionState == SessionState.Playing)
