@@ -3,6 +3,7 @@
 using UnityEngine;
 
 using ProjectVanguard.Models;
+using ProjectVanguard.Models.Entities;
 
 public class Piece : MonoBehaviour
 {

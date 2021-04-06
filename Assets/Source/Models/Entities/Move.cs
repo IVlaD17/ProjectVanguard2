@@ -1,4 +1,4 @@
-﻿namespace Assets.Source.Models.Entities
+﻿namespace ProjectVanguard.Models.Entities
 {
     public class Move
     {

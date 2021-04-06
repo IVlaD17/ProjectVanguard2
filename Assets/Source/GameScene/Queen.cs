@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using ProjectVanguard.Models.Entities;
+
 public class Queen : Piece
 {
     // Awake is called when the script instance is being loaded
