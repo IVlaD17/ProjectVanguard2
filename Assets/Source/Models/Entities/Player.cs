@@ -30,16 +30,19 @@ namespace ProjectVanguard.Models.Entities
             PlayerObject = GameObject.Find($"{ChessColor}Player");
 
             PlayerViewComponent = new PlayerView(this);
-            PlayerInputComponent = new PlayerInput(this);
+            if (IsActive)
+                PlayerInputComponent = new PlayerInput(this);
         }
 
         public void EndTurn()
         {
             IsActive = false;
+            PlayerInputComponent = null;
         }
-        public void StartTime()
+        public void StartTurn()
         {
             IsActive = true;
+            PlayerInputComponent = new PlayerInput(this);
         }
 
         public void ToggleViews()

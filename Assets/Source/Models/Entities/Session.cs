@@ -60,7 +60,7 @@ namespace ProjectVanguard.Models.Entities
         {
             Players[activePlayerIndex % 2].EndTurn();
             activePlayerIndex++;
-            Players[activePlayerIndex % 2].StartTime();
+            Players[activePlayerIndex % 2].StartTurn();
             Moves.Add(moveNotation);
         }
 
