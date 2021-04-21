@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+using ProjectVanguard.Models.Systems;
 using ProjectVanguard.Models.Components;
 
 namespace ProjectVanguard.Models.Entities

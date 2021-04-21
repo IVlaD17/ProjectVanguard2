@@ -78,7 +78,6 @@
     <Compile Include="Assets\Source\Global\Player.cs" />
     <Compile Include="Assets\Source\Models\Components\PieceModel.cs" />
     <Compile Include="Assets\Source\Models\Components\PieceMovement.cs" />
-    <Compile Include="Assets\Source\Models\Components\PlayerInput.cs" />
     <Compile Include="Assets\Source\Models\Components\PlayerView.cs" />
     <Compile Include="Assets\Source\Models\Entities\Game.cs" />
     <Compile Include="Assets\Source\Models\Entities\Move.cs" />
@@ -94,6 +93,7 @@
     <Compile Include="Assets\Source\Models\Systems\CheckValidator.cs" />
     <Compile Include="Assets\Source\Models\Systems\GameUpdater.cs" />
     <Compile Include="Assets\Source\Models\Systems\MoveValidator.cs" />
+    <Compile Include="Assets\Source\Models\Systems\PlayerInput.cs" />
     <Compile Include="Assets\Source\Views\GameMenuView.cs" />
     <Compile Include="Assets\Source\Views\HUDView.cs" />
     <Compile Include="Assets\Source\Views\MainMenuView.cs" />

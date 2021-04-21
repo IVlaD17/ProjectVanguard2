@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-using ProjectVanguard.Models.Systems;
 using ProjectVanguard.Models.Entities;
 
-namespace ProjectVanguard.Models.Components
+namespace ProjectVanguard.Models.Systems
 {
     public class PlayerInput
     {
@@ -40,7 +39,7 @@ namespace ProjectVanguard.Models.Components
                 // Left Click
                 if (Input.GetMouseButtonUp(0))
                 {
-                    if(Player.IsActive)
+                    if (Player.IsActive)
                     {
                         // If player has selected a piece, execute move
                         // If player has not selected a piece, select piece 
@@ -50,7 +49,7 @@ namespace ProjectVanguard.Models.Components
                 // Right Click
                 if (Input.GetMouseButtonUp(1))
                 {
-                    if(Player.IsActive)
+                    if (Player.IsActive)
                     {
                         // Deselect piece
                     }
