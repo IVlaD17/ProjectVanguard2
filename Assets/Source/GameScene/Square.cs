@@ -51,12 +51,6 @@ public class Square : MonoBehaviour
         transform.position = new Vector3(SquareSize * col, 10, SquareSize * row);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void UpdatePiece(Piece newPiece)
     {
         if (MyPiece != null)

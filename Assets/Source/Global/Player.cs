@@ -88,12 +88,6 @@ public class Player : MonoBehaviour
         SelectedPiece = null;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ToggleActive()
     {
         IsActive = !IsActive;
